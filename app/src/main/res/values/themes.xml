@@ -1,8 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.RecipesApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="background">@color/white</item>
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item> <!-- для фона editText -->
+        <item name="colorOnSecondary">@color/black</item> <!-- для самого текста-->
+        <item name="colorOnTertiary">@color/light_grey</item> <!-- для иконок -->
+        <item name="colorError">@color/red</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Theme.RecipesApp" parent="Base.Theme.RecipesApp" />
