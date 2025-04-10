@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DD000000">
+    android:background="?attr/background">
 
     <ImageView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_white"/>
+        android:background="@drawable/background_gradient"/>
 
     <LinearLayout
         android:id="@+id/mainCOntent"
@@ -55,7 +55,7 @@
             android:paddingHorizontal="12dp"
             app:endIconDrawable="@drawable/check_16"
             app:endIconMode="custom"
-            app:endIconTint="@color/black"/>
+            app:endIconTint="@color/black" />
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -115,8 +115,6 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
-
-
     </LinearLayout>
 
     <LinearLayout
