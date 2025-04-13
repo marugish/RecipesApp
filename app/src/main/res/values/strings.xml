@@ -27,6 +27,14 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="or_register_with">Or register with</string>
     <string name="already_have_account">Already have an account?</string>
+    <string name="passwords_dont_match">Passwords don\'t match</string>
     <string name="sign_up"><u>Sign up</u></string>
     <string name="sign_up_title">Sign Up</string>
+
+    <!-- Profile -->
+    <string name="add_photo">Add photo</string>
+    <string name="skip_for_now">Skip for now</string>
+    <string name="profile">Profile</string>
+    <string name="profile_detail">Select a profile photo. Later you can change it.</string>
+
 </resources>
