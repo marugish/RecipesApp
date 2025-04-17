@@ -23,7 +23,7 @@
 
     <LinearLayout
         android:id="@+id/mainContent"
-        style="@style/vertical_linear_layout"
+        style="@style/vertical_linear_layout_with_padding"
         android:layout_width="0dp"
         android:layout_height="0dp"
 

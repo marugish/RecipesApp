@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.recipesapp.databinding.FragmentRegisterBinding
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.UserProfileChangeRequest
 
 class RegisterFragment : Fragment() {
 
@@ -65,12 +66,24 @@ class RegisterFragment : Fragment() {
         binding.signupButton.setOnClickListener {
             val email = binding.mailEditText.text?.toString() ?: ""
             val password = binding.passwordEditText.text?.toString() ?: ""
+            val userName = binding.fullNameEditText.text?.toString() ?: ""
 
             (activity as RootActivity).auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("myTest", "createUserWithEmail:success")
-                        //val user = auth.currentUser
+                        // Установить имя пользователя
+                        val user = (activity as RootActivity).auth.currentUser
+                        val profileUpdates = UserProfileChangeRequest.Builder()
+                            .setDisplayName(userName)
+                            .build()
+                        user!!.updateProfile(profileUpdates)
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Log.d("myTest", "User profile updated.")
+
+                                }
+                            }
                         //updateUI(user)
                         // Переходим на экран добавления фото
                         findNavController().navigate(R.id.action_registerFragment_to_profileFragment)
