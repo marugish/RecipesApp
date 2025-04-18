@@ -71,7 +71,9 @@
         <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
     </style>
 
-    <style name="material_edit_text_style">
+    <!-- LAYOUT -->
+    <!-- TextInputLayout -->
+    <style name="material_text_input_layout_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">44dp</item>
         <item name="boxBackgroundMode">none</item>
@@ -79,10 +81,38 @@
         <item name="cursorColor">@color/main_color</item>
         <item name="hintEnabled">false</item>
     </style>
-    <!-- PasswordEditText -->
-    <style name="password_edit_text_style" parent="material_edit_text_style">
+    <!-- PasswordTextInputLayout -->
+    <style name="password_text_input_layout_style" parent="material_text_input_layout_style">
         <item name="endIconDrawable">@drawable/eye</item>
         <item name="endIconTint">@color/password_toggle_color</item>
         <item name="endIconMode">password_toggle</item>
     </style>
+
+    <!-- EDIT TEXT -->
+    <style name="text_input_edit_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textAppearance">@style/hint_text_style</item>
+        <item name="android:textColorHint">?attr/colorOnTertiary</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <!-- PASSWORD EDIT TEXT -->
+    <style name="password_text_input_edit_text_style" parent="text_input_edit_text_style">
+        <item name="android:hint">@string/password</item>
+        <item name="android:drawableStart">@drawable/lock_16</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <!-- EMAIL EDIT TEXT -->
+    <style name="mail_text_input_edit_text_style" parent="text_input_edit_text_style">
+        <item name="android:hint">@string/email</item>
+        <item name="android:drawableStart">@drawable/email_16</item>
+        <item name="android:inputType">text</item>
+    </style>
+
 </resources>

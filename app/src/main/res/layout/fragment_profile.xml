@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/vertical_linear_layout"
-    android:background="@drawable/login_image"
+    android:background="@drawable/combined_background"
     tools:context=".ProfileFragment">
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_gradient" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarProfile"

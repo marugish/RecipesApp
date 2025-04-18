@@ -5,21 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_image"
+    android:background="@drawable/combined_background"
     tools:context=".LoginFragment">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/login_image"
-        android:scaleType="centerCrop"
-        android:contentDescription="backgroundLogin"
-        android:visibility="gone"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_gradient"/>
 
     <LinearLayout
         android:id="@+id/mainContent"
