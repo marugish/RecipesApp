@@ -17,7 +17,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.recipesapp.databinding.FragmentLoginBinding
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.OAuthCredential
+import com.google.firebase.auth.OAuthProvider
 import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
@@ -34,6 +38,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         val updateButtonState = {
             val email = binding.mailEditText.text?.toString().orEmpty()
@@ -91,10 +96,61 @@ class LoginFragment : Fragment() {
         }
 
         binding.googleLoginButton.setOnClickListener {
-
             launchCredentialManager()
         }
 
+        val pendingResultTask = FirebaseAuth.getInstance().pendingAuthResult
+        pendingResultTask?.addOnSuccessListener { authResult ->
+            handleGitHubSignInSuccess(authResult)
+        }?.addOnFailureListener {
+            Log.e("GitHubAuth", "Pending auth failed: ${it.localizedMessage}")
+        }
+
+        binding.githubLoginButton.setOnClickListener {
+            signInWithGitHub()
+        }
+
+    }
+
+    private fun signInWithGitHub() {
+        val provider = OAuthProvider.newBuilder("github.com")
+            .addCustomParameter("scope", "user:email read:user")
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+
+        if (currentUser != null) {
+            // Пользователь уже вошёл — привязываем GitHub к аккаунту
+            currentUser.startActivityForLinkWithProvider(requireActivity(), provider.build())
+                .addOnSuccessListener { authResult ->
+                    Log.d("GitHubAuth", "GitHub account linked to existing user")
+                    handleGitHubSignInSuccess(authResult)
+                }
+                .addOnFailureListener {
+                    Log.e("GitHubAuth", "Linking failed: ${it.localizedMessage}")
+                }
+        } else {
+            // Первый вход через GitHub
+            FirebaseAuth.getInstance()
+                .startActivityForSignInWithProvider(requireActivity(), provider.build())
+                .addOnSuccessListener { authResult ->
+                    handleGitHubSignInSuccess(authResult)
+                }
+                .addOnFailureListener {
+                    Log.e("GitHubAuth", "Sign-in failed: ${it.localizedMessage}")
+                }
+        }
+    }
+
+    private fun handleGitHubSignInSuccess(authResult: AuthResult) {
+        val user = authResult.user
+        val profile = authResult.additionalUserInfo?.profile
+        val credential = authResult.credential as? OAuthCredential
+
+        val accessToken = credential?.accessToken
+        Log.d("GitHubAuth", "Access token: $accessToken")
+
+        // Переход к экрану профиля
+        findNavController().navigate(R.id.action_loginFragment_to_searchFragment)
     }
 
     private fun launchCredentialManager() {
