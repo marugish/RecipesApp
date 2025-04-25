@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+        android:layout_height="62dp"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:background="@drawable/round_profile"
+            android:scaleType="centerCrop"
+            android:padding="2dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/profileName"
+                style="@style/subtitle_text_style"
+                android:text="@string/profile" />
+
+            <TextView
+                android:id="@+id/profileEmail"
+                style="@style/subtitle_text_style"
+                android:text="@string/email"
+                android:textSize="@dimen/text_10" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/grey" />
+
+</LinearLayout>

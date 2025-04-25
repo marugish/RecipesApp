@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/vertical_linear_layout"
+    android:background="@drawable/combined_background"
+    tools:context=".ProfileFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarProfile"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:background="@android:color/transparent"
+        app:title="@string/profile"
+        style="@style/bold_title_text_style"
+        app:titleTextColor="?attr/colorOnSecondary"
+
+        android:layout_gravity="start"
+        app:navigationIcon="@drawable/back"
+
+        app:iconPadding="4dp"
+        app:buttonGravity="center_vertical"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/default_margin"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/addPhotoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarProfile"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/profileTextView"
+            style="@style/subtitle_text_style"
+            android:paddingHorizontal="@dimen/default_margin"
+            android:text="@string/profile_detail"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:backgroundTint="@android:color/transparent"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <ImageButton
+                android:id="@+id/add_photo"
+                android:layout_width="312dp"
+                android:layout_height="312dp"
+                android:background="@drawable/add_photo_rectangle"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+
+
+
+
+    <Button
+        android:id="@+id/addPhotoButton"
+        style="@style/button_style"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:backgroundTint="@drawable/button_selector"
+        android:enabled="false"
+        android:text="@string/add_photo"
+        app:layout_constraintBottom_toTopOf="@+id/skipButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/skipButton"
+        android:text="@string/skip_for_now"
+        style="@style/button_style"
+        android:background="@drawable/button_outline"
+        android:textColor="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:enabled="true"
+        android:layout_marginHorizontal="@dimen/default_margin"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
