@@ -1,7 +1,6 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.home
 
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,8 +12,10 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.recipesapp.R
+import com.example.recipesapp.RootActivity
 import com.example.recipesapp.databinding.FragmentProfileBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.example.recipesapp.presentation.home.ProfileViewModel
 import com.google.firebase.auth.UserProfileChangeRequest
 
 

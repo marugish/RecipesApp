@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.presentation.auth
 
 import androidx.lifecycle.ViewModel
 
