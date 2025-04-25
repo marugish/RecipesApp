@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.recipesapp.presentation.auth.LoginViewModel
+import com.example.recipesapp.R
 import com.example.recipesapp.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {

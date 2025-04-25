@@ -1,10 +1,12 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.favorites
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.recipesapp.presentation.favorites.FavoritesViewModel
+import com.example.recipesapp.R
 
 class FavoritesFragment : Fragment() {
     private lateinit var viewModel: FavoritesViewModel
