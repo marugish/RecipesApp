@@ -78,13 +78,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.8.9")
     implementation("androidx.fragment:fragment-ktx:1.8.6")
 
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-
-
-
-
-    //implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    //implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //implementation("io.insert-koin:koin-android:3.3.0")
 
 
