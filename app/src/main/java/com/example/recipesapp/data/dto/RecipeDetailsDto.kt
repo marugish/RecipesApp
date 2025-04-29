@@ -13,7 +13,7 @@ data class RecipeDetailsDto(
     @SerializedName("cookingMinutes") val cookingMinutes: Int?,
     @SerializedName("aggregateLikes") val likes: Int,
     @SerializedName("healthScore") val healthScore: Int,
-    @SerializedName("extendedIngredients") val ingredients: List<IngredientsDto>,
+    @SerializedName("extendedIngredients") val ingredients: List<IngredientDto>,
     @SerializedName("summary") val summary: String,
     @SerializedName("cuisines") val cuisines: List<String>,
     @SerializedName("dishTypes") val dishTypes: List<String>,
