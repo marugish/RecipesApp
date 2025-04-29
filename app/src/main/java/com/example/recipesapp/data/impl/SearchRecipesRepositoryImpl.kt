@@ -1,0 +1,70 @@
+package com.example.recipesapp.data.impl
+
+import com.example.recipesapp.data.mappers.toDomain
+import com.example.recipesapp.data.network.ApiService
+import com.example.recipesapp.data.network.call
+import com.example.recipesapp.domain.search.SearchRecipesRepository
+import com.example.recipesapp.util.AppError
+import com.example.recipesapp.domain.search.model.RecipesStateLoad
+import com.example.recipesapp.domain.search.model.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+
+class SearchRecipesRepositoryImpl(private val apiService: ApiService): SearchRecipesRepository {
+    override fun searchRecipes(
+        query: String,
+        offset: Int,
+        number: Int,
+        addRecipeInformation: Boolean
+    ): Flow<RecipesStateLoad> {
+        return flow {
+            // Попытка загрузки
+            emit(RecipesStateLoad.Loading)
+            // Получаем данные
+            val response = kotlin.runCatching {
+                apiService.searchRecipes(
+                    query = query,
+                    offset = offset,
+                    number = number,
+                    addRecipeInformation = addRecipeInformation
+                ).call()
+            }.getOrNull()
+            // Обрабатываем результат
+            emit(
+                when (response) {
+                    null -> {
+                        RecipesStateLoad.Loading
+                    }
+
+                    is Response.Error -> {
+                        RecipesStateLoad.Error(
+                            when(response.errorCode) {
+                                400 -> AppError.BadRequest
+                                401 -> AppError.Unauthorized
+                                402 -> AppError.PaymentRequired
+                                403 -> AppError.Forbidden
+                                404 -> AppError.NotFound
+                                500 -> AppError.InternalServer
+                                else -> {
+                                    // Обработка остальных ошибок
+                                    println("Неизвестная ошибка: код ${response.errorCode}")
+                                    //AppError.Unknown(response.errorCode)
+                                    AppError.Unknown
+                                }
+                            }
+                        )
+                    }
+
+                    is Response.Success -> RecipesStateLoad.Success(
+                        response.data.toDomain()
+                    )
+
+                }
+            )
+        }.flowOn(Dispatchers.IO)
+
+    }
+
+}
