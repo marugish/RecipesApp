@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.recipesapp.R
+import com.example.recipesapp.RootActivity
 import com.example.recipesapp.databinding.FragmentHomeBinding
-import com.example.recipesapp.databinding.FragmentProfileBinding
 import com.example.recipesapp.presentation.home.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -19,7 +20,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }

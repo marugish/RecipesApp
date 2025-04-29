@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.auth
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,8 @@ import android.widget.Toast
 import com.example.recipesapp.databinding.FragmentRegisterBinding
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import com.example.recipesapp.R
+import com.example.recipesapp.RootActivity
 import com.google.firebase.auth.UserProfileChangeRequest
 
 class RegisterFragment : Fragment() {

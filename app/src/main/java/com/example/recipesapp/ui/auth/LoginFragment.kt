@@ -16,11 +16,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.recipesapp.presentation.auth.LoginViewModel
 import com.example.recipesapp.R
+import com.example.recipesapp.RootActivity
 import com.example.recipesapp.databinding.FragmentLoginBinding
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthWebException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.OAuthProvider
@@ -116,7 +118,8 @@ class LoginFragment : Fragment() {
 
     private fun signInWithGitHub() {
         val provider = OAuthProvider.newBuilder("github.com")
-            .addCustomParameter("scope", "user:email read:user")
+            .addCustomParameter("allow_signup", "false") // можно добавить параметры
+            .setScopes(listOf("user:email")) // нужно добавить хотя бы базовый scope!
 
         val currentUser = FirebaseAuth.getInstance().currentUser
 
@@ -127,8 +130,14 @@ class LoginFragment : Fragment() {
                     Log.d("GitHubAuth", "GitHub account linked to existing user")
                     handleGitHubSignInSuccess(authResult)
                 }
-                .addOnFailureListener {
-                    Log.e("GitHubAuth", "Linking failed: ${it.localizedMessage}")
+                .addOnFailureListener { e ->
+                    if (e is FirebaseAuthWebException) {
+                        Log.e("GitHubAuth", "Web Exception: ${e.errorCode} - ${e.localizedMessage}", e)
+                    } else {
+                        Log.e("GitHubAuth", "Other Exception: ${e.localizedMessage}", e)
+                    }
+                    //Log.e("GitHubAuth", "Sign-in failed", it)
+                    //Log.e("GitHubAuth", "Linking failed: ${it.localizedMessage}")
                 }
         } else {
             // Первый вход через GitHub
@@ -147,6 +156,7 @@ class LoginFragment : Fragment() {
         val user = authResult.user
         val profile = authResult.additionalUserInfo?.profile
         val credential = authResult.credential as? OAuthCredential
+
 
         val accessToken = credential?.accessToken
         Log.d("GitHubAuth", "Access token: $accessToken")
