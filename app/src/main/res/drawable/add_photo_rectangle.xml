@@ -11,7 +11,7 @@
     </item>
 
     <item
-        android:drawable="@drawable/add_photo"
+        android:drawable="@drawable/ic_add_photo"
         android:width="100dp"
         android:height="100dp"
         android:gravity="center"/>

@@ -18,7 +18,7 @@
         app:titleTextColor="?attr/colorOnSecondary"
 
         android:layout_gravity="start"
-        app:navigationIcon="@drawable/back"
+        app:navigationIcon="@drawable/ic_back"
 
         app:iconPadding="4dp"
         app:buttonGravity="center_vertical"
@@ -61,7 +61,7 @@
             android:hint="@string/full_name"
 
 
-            android:drawableStart="@drawable/email_16"
+            android:drawableStart="@drawable/ic_email_16"
             android:drawablePadding="8dp"
             android:paddingHorizontal="12dp" />
 
@@ -72,10 +72,10 @@
             android:inputType="text"
             android:maxLines="1"
             android:hint="@string/email"
-            android:drawableStart="@drawable/email_16"
+            android:drawableStart="@drawable/ic_email_16"
             android:drawablePadding="8dp"
             android:paddingHorizontal="12dp"
-            app:endIconDrawable="@drawable/check_16"
+            app:endIconDrawable="@drawable/ic_check_16"
             app:endIconMode="custom"
             app:endIconTint="@color/black" />
 
@@ -86,10 +86,10 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:hint="@string/password"
-            android:drawableStart="@drawable/lock_16"
+            android:drawableStart="@drawable/ic_lock_16"
             android:drawablePadding="8dp"
             android:paddingHorizontal="12dp"
-            app:endIconDrawable="@drawable/check_16"
+            app:endIconDrawable="@drawable/ic_check_16"
             app:endIconMode="custom"
             app:endIconTint="@color/black"/>
 
@@ -100,10 +100,10 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:hint="@string/confirm_password"
-            android:drawableStart="@drawable/lock_16"
+            android:drawableStart="@drawable/ic_lock_16"
             android:drawablePadding="8dp"
             android:paddingHorizontal="12dp"
-            app:endIconDrawable="@drawable/check_16"
+            app:endIconDrawable="@drawable/ic_check_16"
             app:endIconMode="custom"
             app:endIconTint="@color/black"/>
 
