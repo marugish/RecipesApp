@@ -43,7 +43,7 @@ class ProfileFragment : Fragment() {
             if (uri != null) {
                 Glide.with(this)
                     .load(uri)
-                    .placeholder(R.drawable.add_photo)
+                    .placeholder(R.drawable.ic_add_photo)
                     .into(binding.addPhoto)
 
                 photoUri = uri

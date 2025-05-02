@@ -41,5 +41,10 @@
     <string name="reset_password">Reset Password</string>
 
     <string name="default_web_client_id">433801035424-miod1d6ns24l6bf46psmce6hkb6qtlc8.apps.googleusercontent.com</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="recipeImage">recipeImage</string>
+    <string name="level">Level</string>
+    <string name="recipes_found">Recipes found</string>
+    <string name="trending_search">Trending Search</string>
 
 </resources>

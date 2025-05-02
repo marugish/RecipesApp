@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
             binding.profileEmail.text = email
             Glide.with(this)
                 .load(photoUrl)
-                .placeholder(R.drawable.add_photo)
+                .placeholder(R.drawable.ic_add_photo)
                 .apply(RequestOptions.circleCropTransform())
                 .into(binding.profileImage)
 

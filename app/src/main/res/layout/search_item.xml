@@ -1,0 +1,117 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        app:cardCornerRadius="12dp"
+
+        app:cardElevation="0dp"
+        android:backgroundTint="#0C878787"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/recipeImage"
+                android:layout_width="0dp"
+                android:layout_height="152dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/recipeImage"
+                android:src="@drawable/food_placeholder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/difficultyLevel"
+                android:layout_width="54dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/level"
+                android:textColor="@color/white"
+                android:background="@drawable/level_rectangle"
+                style="@style/hint_text_style"
+                app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+                app:layout_constraintStart_toStartOf="@id/recipeImage" />
+
+            <ImageView
+                android:id="@+id/likeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/round_like_solid"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_star"
+                app:layout_constraintTop_toBottomOf="@id/recipeImage"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:gravity="center"
+                tools:text="4.5 (19+)"
+                style="@style/subtitle_text_style"
+                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintBottom_toBottomOf="@id/imageView"
+                app:layout_constraintTop_toTopOf="@id/imageView" />
+
+            <TextView
+                android:id="@+id/recipeName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                style="@style/semi_bold_title_text_style"
+                tools:text="Recipe Name"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+
+                android:layout_marginBottom="8dp"
+                android:textSize="10sp"
+                android:lineSpacingExtra="4dp"
+                android:maxLines="3"
+                style="@style/small_text_style"
+                tools:text="You can never have too many main course recipes, so give Pasta with Garlic, Scallions, Cauliflower Breadcrumbs a try. One serving contains 543 calories, 17g of protein, and 16g of fat. For $1.57 per serving, this recipe covers 22% of your daily requirements of vitamins and minerals. This recipe serves 2. A mixture of butter, white wine, pasta, and a handful of other ingredients are all it takes to make this recipe so yummy. 209 people have tried and liked this recipe. It is brought to you by fullbellysisters.blogspot.com. From preparation to the plate, this recipe takes approximately 45 minutes. Taking all factors into account, this recipe earns a spoonacular score of 83%, which is tremendous. If you like this recipe, take a look at these similar recipes:"
+                app:layout_constraintTop_toBottomOf="@id/recipeName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

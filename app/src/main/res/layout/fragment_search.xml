@@ -2,16 +2,88 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/vertical_linear_layout"
+
+    android:padding="@dimen/default_margin"
+
     tools:context=".ui.search.SearchFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Search" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchInputContainer"
+        style="@style/search_text_input_layout_style"
+        android:layout_marginBottom="@dimen/default_margin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchTextInput"
+            style="@style/search_text_input_edit_text_style" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/trendingSearchLayout"
+        style="@style/vertical_linear_layout"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/semi_bold_title_text_style"
+            android:text="@string/trending_search"
+            android:layout_marginBottom="@dimen/default_margin"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/trendingSearchRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/type_meal_item"
+            android:visibility="visible"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recommendationLayout"
+        style="@style/vertical_linear_layout"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/semi_bold_title_text_style"
+            android:text="@string/recommendation"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommendationRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/recommendation_item"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        style="@style/vertical_linear_layout"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/semi_bold_title_text_style"
+            android:text="@string/recipes_found" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/search_item"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
 </LinearLayout>
 
 
