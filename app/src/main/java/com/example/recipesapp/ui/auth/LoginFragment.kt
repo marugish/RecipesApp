@@ -2,7 +2,6 @@ package com.example.recipesapp.ui.auth
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.credentials.GetCredentialRequest
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.presentation.auth.LoginViewModel
 import com.example.recipesapp.R
 import com.example.recipesapp.RootActivity
@@ -28,21 +28,16 @@ import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.OAuthProvider
 import kotlinx.coroutines.launch
 
-class LoginFragment : Fragment() {
-
-    private lateinit var binding: FragmentLoginBinding
+class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private lateinit var viewModel: LoginViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentLoginBinding {
+        return FragmentLoginBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val updateButtonState = {
             val email = binding.mailEditText.text?.toString().orEmpty()

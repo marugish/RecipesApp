@@ -2,7 +2,6 @@ package com.example.recipesapp.ui.auth
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,20 @@ import android.widget.Toast
 import com.example.recipesapp.databinding.FragmentRegisterBinding
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.R
 import com.example.recipesapp.RootActivity
 import com.google.firebase.auth.UserProfileChangeRequest
 
-class RegisterFragment : Fragment() {
-
-    private lateinit var binding: FragmentRegisterBinding
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
     private lateinit var viewModel: RegisterViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentRegisterBinding {
+        return FragmentRegisterBinding.inflate(inflater, container, false)
     }
 
     private var email: String = ""

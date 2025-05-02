@@ -6,20 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.presentation.auth.ResetPasswordViewModel
 import com.example.recipesapp.RootActivity
+import com.example.recipesapp.databinding.FragmentProfileBinding
 import com.example.recipesapp.databinding.FragmentResetPasswordBinding
 
-class ResetPasswordFragment : Fragment() {
-    private lateinit var binding: FragmentResetPasswordBinding
+class ResetPasswordFragment : BaseFragment<FragmentResetPasswordBinding>() {
+
     private lateinit var viewModel: ResetPasswordViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentResetPasswordBinding {
+        return FragmentResetPasswordBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
