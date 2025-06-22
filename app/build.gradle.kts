@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("org.jetbrains.kotlin.android") version "1.9.24"
     id("com.google.gms.google-services")
+
+    id("com.google.devtools.ksp") version "1.9.24-1.0.20"
 }
 
 android {
@@ -41,56 +42,69 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
+    //implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
     //implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
     //implementation("org.jetbrains.kotlin:kotlin-reflect:2.1.0")
     //implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.24"))
 
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.activity:activity-ktx:1.10.1")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    // AndroidX
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity.ktx)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    // AndroidX Navigation
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.fragment)
 
+    // AndroidX Room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    //implementation("androidx.room:room-runtime:2.7.1")
+    //kapt("androidx.room:room-compiler:2.7.1")
+    //implementation("androidx.room:room-ktx:2.7.1")
+
+    // AndroidX Lifecycle
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // UI layer libraries
+    implementation(libs.material)
+    implementation(libs.constraintlayout)
+
+    // KotlinX
+    implementation(libs.kotlinx.coroutines)
+
+    // Tools libraries
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
-
-    // Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
-    implementation("com.google.firebase:firebase-analytics")
-    // Firebase Auth
-    implementation("com.google.firebase:firebase-auth")
-    // Credential Manager
-    implementation("androidx.credentials:credentials:1.3.0")
-    implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
-
-    // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.9")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.9")
-    implementation("androidx.fragment:fragment-ktx:1.8.6")
-
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
+    // Gson
+    implementation(libs.gson)
     // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    // Okhttp
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    // Koin
+    implementation(libs.koin)
+    // Firebase BoM
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    // Firebase Auth
+    implementation(libs.firebase.auth)
+    // Credential Manager
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
 
-    //implementation("io.insert-koin:koin-android:3.3.0")
-
-
-    //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-
-    // Room
-    //implementation("androidx.room:room-runtime:2.6.1")
-    //kapt("androidx.room:room-compiler:2.6.1")
-    //implementation("androidx.room:room-ktx:2.6.1")
+    // Unit tests
+    testImplementation(libs.junit)
+    // UI tests
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.ext.junit)
 
 }

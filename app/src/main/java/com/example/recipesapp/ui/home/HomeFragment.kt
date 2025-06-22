@@ -1,28 +1,23 @@
 package com.example.recipesapp.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.R
 import com.example.recipesapp.RootActivity
 import com.example.recipesapp.databinding.FragmentHomeBinding
 import com.example.recipesapp.presentation.home.HomeViewModel
 
-class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private lateinit var viewModel: HomeViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentHomeBinding {
+        return FragmentHomeBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

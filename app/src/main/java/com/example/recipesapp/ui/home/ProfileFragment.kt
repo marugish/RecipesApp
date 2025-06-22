@@ -3,7 +3,6 @@ package com.example.recipesapp.ui.home
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,27 +11,22 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.R
 import com.example.recipesapp.RootActivity
 import com.example.recipesapp.databinding.FragmentProfileBinding
 import com.example.recipesapp.presentation.home.ProfileViewModel
 import com.google.firebase.auth.UserProfileChangeRequest
 
-
-class ProfileFragment : Fragment() {
-    private lateinit var binding: FragmentProfileBinding
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private lateinit var viewModel: ProfileViewModel
 
     private lateinit var pickMedia: ActivityResultLauncher<PickVisualMediaRequest>
     private var photoUri: Uri? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentProfileBinding {
+        return FragmentProfileBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
