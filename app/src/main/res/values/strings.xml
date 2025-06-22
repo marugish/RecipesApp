@@ -47,4 +47,7 @@
     <string name="recipes_found">Recipes found</string>
     <string name="trending_search">Trending Search</string>
 
+    <!-- Errors -->
+    <string name="no_internet">No internet</string>
+
 </resources>
