@@ -70,12 +70,10 @@
 
             <TextView
                 android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
+                style="@style/subtitle_text_style"
+                android:textSize="11sp"
                 android:gravity="center"
                 tools:text="4.5 (19+)"
-                style="@style/subtitle_text_style"
                 app:layout_constraintStart_toEndOf="@id/imageView"
                 app:layout_constraintBottom_toBottomOf="@id/imageView"
                 app:layout_constraintTop_toTopOf="@id/imageView" />
@@ -105,6 +103,7 @@
                 android:textSize="10sp"
                 android:lineSpacingExtra="4dp"
                 android:maxLines="3"
+                android:ellipsize="end"
                 style="@style/small_text_style"
                 tools:text="You can never have too many main course recipes, so give Pasta with Garlic, Scallions, Cauliflower Breadcrumbs a try. One serving contains 543 calories, 17g of protein, and 16g of fat. For $1.57 per serving, this recipe covers 22% of your daily requirements of vitamins and minerals. This recipe serves 2. A mixture of butter, white wine, pasta, and a handful of other ingredients are all it takes to make this recipe so yummy. 209 people have tried and liked this recipe. It is brought to you by fullbellysisters.blogspot.com. From preparation to the plate, this recipe takes approximately 45 minutes. Taking all factors into account, this recipe earns a spoonacular score of 83%, which is tremendous. If you like this recipe, take a look at these similar recipes:"
                 app:layout_constraintTop_toBottomOf="@id/recipeName"

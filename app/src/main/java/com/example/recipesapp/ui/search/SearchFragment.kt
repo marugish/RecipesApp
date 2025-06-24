@@ -12,6 +12,7 @@ import com.example.recipesapp.presentation.search.SearchViewModel
 import com.example.recipesapp.databinding.FragmentSearchBinding
 import com.example.recipesapp.domain.search.model.Recipe
 import com.example.recipesapp.presentation.search.RecipesScreenState
+import com.example.recipesapp.util.hideKeyboard
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
@@ -105,34 +106,40 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             is RecipesScreenState.Content -> showContent(state.recipesList, state.foundRecipesCount)
             is RecipesScreenState.NothingFound -> showEmpty()
             // подумать про ошибки
-            is RecipesScreenState.NetworkError -> showError(state.errorText)
-            is RecipesScreenState.ServerError -> showError(state.errorText)
+            is RecipesScreenState.NetworkError -> showError(state) // state.errorText
+            is RecipesScreenState.ServerError -> showError(state) // state.errorText
         }
     }
 
     private fun showContent(recipesList: List<Recipe>, foundRecipesCount: Int) {
         adapter.updateRecipesList(recipesList)
         recyclerViewVisibility(isShown = true)
+        progressBarContentVisibility()
+
         //recipesCountVisibility(isShown = true, count = foundVacanciesCount)
-        //progressBarContentVisibility()
         //progressBarPaginationVisibility()
         //errorMessageVisibility()
     }
 
     private fun showLoading() {
-
+        progressBarContentVisibility(isShown = true)
+        hideKeyboard()
     }
 
     private fun showEmpty() {
         TODO("Not yet implemented")
     }
 
-    private fun showError(error: String) {
+    private fun showError(error: RecipesScreenState) {
         TODO("Not yet implemented")
     }
 
     private fun recyclerViewVisibility(isShown: Boolean = false) {
         binding.searchLayout.isVisible = isShown
+    }
+
+    private fun progressBarContentVisibility(isShown: Boolean = false) {
+        binding.progressBarContent.isVisible = isShown
     }
 
 }

@@ -19,6 +19,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
     <style name="bold_title_text_style" parent="base_text_style">
         <item name="android:textSize">@dimen/title_text_size</item>
