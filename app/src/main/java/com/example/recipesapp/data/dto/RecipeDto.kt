@@ -11,6 +11,9 @@ data class RecipeDto(
     @SerializedName("readyInMinutes") val readyInMinutes: Int,
     @SerializedName("servings") val servings: Int,
     @SerializedName("summary") val summary: String,
+    @SerializedName("spoonacularScore") val score: Float,
+    @SerializedName("aggregateLikes") val likes: Int,
+    //@SerializedName("extendedIngredients") val ingredients: List<IngredientDto>
 )
 
 // val veryPopular: Boolean,

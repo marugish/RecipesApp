@@ -22,6 +22,9 @@ private fun RecipeDto.toDomain(): Recipe {
         title = title,
         readyInMinutes = readyInMinutes,
         servings = servings,
-        summary = summary
+        summary = summary,
+        score = score,
+        likes = likes,
+        //ingredientsList =
     )
 }
