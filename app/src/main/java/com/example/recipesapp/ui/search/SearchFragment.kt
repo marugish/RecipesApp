@@ -105,9 +105,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             is RecipesScreenState.Loading -> showLoading()
             is RecipesScreenState.Content -> showContent(state.recipesList, state.foundRecipesCount)
             is RecipesScreenState.NothingFound -> showEmpty()
+
             // подумать про ошибки
-            is RecipesScreenState.NetworkError -> showError(state) // state.errorText
-            is RecipesScreenState.ServerError -> showError(state) // state.errorText
+            // не нужно столько состояний!!!!!!!
+            is RecipesScreenState.Error -> showError(state.errorText)
+            //is RecipesScreenState.InternalServerError -> showError(state.errorText)
+            //is RecipesScreenState.UnknownError -> showError(state.errorText)
         }
     }
 
@@ -130,8 +133,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         TODO("Not yet implemented")
     }
 
-    private fun showError(error: RecipesScreenState) {
-        TODO("Not yet implemented")
+    private fun showError(errorText: String) {
+        errorLayoutVisibility(isShown = true)
+        binding.errorText.text = errorText
+        // + картинка
     }
 
     private fun recyclerViewVisibility(isShown: Boolean = false) {
@@ -140,6 +145,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun progressBarContentVisibility(isShown: Boolean = false) {
         binding.progressBarContent.isVisible = isShown
+    }
+
+    private fun errorLayoutVisibility(isShown: Boolean = false) {
+        binding.searchError.isVisible = isShown
     }
 
 }

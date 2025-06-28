@@ -86,6 +86,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Страница Ошибок -->
+        <LinearLayout
+            android:id="@+id/search_error"
+            style="@style/vertical_linear_layout"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="224dp"
+                android:src="@drawable/ic_error_unknown2"/>
+
+            <TextView
+                android:id="@+id/error_text"
+                android:layout_width="match_parent"
+                android:text="@string/unknown"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/default_margin"
+                style="@style/semi_bold_title_text_style" />
+        </LinearLayout>
+
         <ProgressBar
             android:id="@+id/progressBarContent"
             android:layout_width="wrap_content"

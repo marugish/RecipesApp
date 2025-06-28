@@ -50,4 +50,13 @@
     <!-- Errors -->
     <string name="no_internet">No internet</string>
 
+    <!-- На русском -->
+    <string name="bad_request">Ошибка 400\nНеверный запрос. Попробуйте изменить параметры.</string>
+    <string name="unauthorized">Ошибка 401\nВы не авторизованы. Пожалуйста, войдите в аккаунт.</string>
+    <string name="payment_required">Ошибка 402\nИсчерпан лимит запросов. Повторите позже.</string>
+    <string name="forbidden">Ошибка 403\nДоступ запрещён.</string>
+    <string name="not_found">Ошибка 404\nРесурс не найден.</string>
+    <string name="internal_server">Ошибка 500\nВнутренняя ошибка сервера. Повторите попытку позже.</string>
+    <string name="unknown">Неизвестная ошибка.</string>
+
 </resources>
