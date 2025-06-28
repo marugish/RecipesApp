@@ -16,12 +16,12 @@ interface ApiService {
         @Query("query") query: String,
         @Query("offset") offset: Int,
         @Query("number") number: Int,
-        @Query("addRecipeInformation") addRecipeInformation: Boolean
+        @Query("addRecipeInformation") addRecipeInformation: Boolean,
+        @Query("fillIngredients") fillIngredients: Boolean
     ): Response<RecipesResponse>
 
     // почитать про suspend
     // почитать про QueryMap
-    // не забыть про API Key
 
 
     // Для рекомендаций

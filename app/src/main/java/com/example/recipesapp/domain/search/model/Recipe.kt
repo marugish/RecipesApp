@@ -10,7 +10,7 @@ data class Recipe(
     val summary: String,
     val score: Float,
     val likes: Int,
-    //val ingredientsList: List<Ingredient>,
+    val ingredientsList: List<Ingredient>,
 
     // val veryPopular: Boolean,
     // val weightWatcherSmartPoints: Int,
@@ -31,7 +31,7 @@ data class Ingredient(
     val amount: Double,
     val unit: String,
     //val meta: List<String>,
-    val measures: Measures
+    /*val measures: Measures*/ // пока убрала
 )
 
 data class Measures(

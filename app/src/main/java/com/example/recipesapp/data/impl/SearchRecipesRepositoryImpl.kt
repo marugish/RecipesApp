@@ -17,7 +17,8 @@ class SearchRecipesRepositoryImpl(private val apiService: ApiService): SearchRec
         query: String,
         offset: Int,
         number: Int,
-        addRecipeInformation: Boolean
+        addRecipeInformation: Boolean,
+        fillIngredients: Boolean
     ): Flow<RecipesStateLoad> {
         return flow {
             // Попытка загрузки
@@ -28,7 +29,8 @@ class SearchRecipesRepositoryImpl(private val apiService: ApiService): SearchRec
                     query = query,
                     offset = offset,
                     number = number,
-                    addRecipeInformation = addRecipeInformation
+                    addRecipeInformation = addRecipeInformation,
+                    fillIngredients = fillIngredients
                 ).call()
             }.getOrNull()
             // Обрабатываем результат

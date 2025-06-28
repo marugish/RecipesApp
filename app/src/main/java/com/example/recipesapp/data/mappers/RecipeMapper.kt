@@ -1,7 +1,9 @@
 package com.example.recipesapp.data.mappers
 
+import com.example.recipesapp.data.dto.IngredientDto
 import com.example.recipesapp.data.dto.RecipeDto
 import com.example.recipesapp.data.network.RecipesResponse
+import com.example.recipesapp.domain.search.model.Ingredient
 import com.example.recipesapp.domain.search.model.Recipe
 import com.example.recipesapp.domain.search.model.RecipesFound
 
@@ -25,6 +27,19 @@ private fun RecipeDto.toDomain(): Recipe {
         summary = summary,
         score = score,
         likes = likes,
-        //ingredientsList =
+        ingredientsList = ingredients.map { it.toDomain() }
+    )
+}
+
+private fun IngredientDto.toDomain(): Ingredient {
+    return Ingredient(
+        id = id,
+        image = image,
+        name = name,
+        nameClean = nameClean,
+        original = original,
+        originalName = originalName,
+        amount = amount,
+        unit = unit
     )
 }

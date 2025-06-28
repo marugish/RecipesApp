@@ -15,8 +15,10 @@ object RecipeUtils {
     Сложный: readyInMinutes > 45,
              шагов > 10,
              ингредиентов > 10. */
-    fun getDifficultyLevel(readyInMinutes: Int): DifficultyLevel {
+    fun getDifficultyLevel(readyInMinutes: Int, ingredientsCount: Int): DifficultyLevel {
         return when {
+            // добавить ingredientsCount
+            // ...
             readyInMinutes <= 20 -> DifficultyLevel.EASY
             readyInMinutes in 21..45 -> DifficultyLevel.MIDDLE
             else -> DifficultyLevel.HARD

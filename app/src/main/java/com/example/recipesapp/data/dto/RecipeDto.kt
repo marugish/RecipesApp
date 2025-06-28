@@ -3,6 +3,7 @@ package com.example.recipesapp.data.dto
 import com.google.gson.annotations.SerializedName
 
 // что-то из этого может быть пустым
+// сделать для тех параметров, которые будут false
 data class RecipeDto(
     @SerializedName("id") val id: Int,
     @SerializedName("image") val imageUrl: String,
@@ -13,7 +14,7 @@ data class RecipeDto(
     @SerializedName("summary") val summary: String,
     @SerializedName("spoonacularScore") val score: Float,
     @SerializedName("aggregateLikes") val likes: Int,
-    //@SerializedName("extendedIngredients") val ingredients: List<IngredientDto>
+    @SerializedName("extendedIngredients") val ingredients: List<IngredientDto>
 )
 
 // val veryPopular: Boolean,
@@ -33,8 +34,7 @@ data class RecipeDto(
 "main dish",
 "dinner"
 ],
-"spoonacularScore": 79.13444519042969,
-"spoonacularSourceUrl": "https://spoonacular.com/lamb-burgers-with-tzatziki-sauce-649195" */
+*/
 
 /*data class VacancyDTO(
     @SerializedName("id") val id: String,
