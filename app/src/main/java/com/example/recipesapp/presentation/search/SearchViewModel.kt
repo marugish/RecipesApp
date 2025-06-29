@@ -5,10 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recipesapp.R
 import com.example.recipesapp.domain.search.SearchRecipesInteractor
 import com.example.recipesapp.domain.search.model.RecipesSearchResult
-import com.example.recipesapp.util.AppError
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -26,7 +24,7 @@ class SearchViewModel(
     val searchScreenState: LiveData<RecipesScreenState> = _searchScreenState
 
     init {
-
+        // тут будет вызов рекомендаций и список фильтров
     }
 
     fun searchDebounce(changedText: String) {
@@ -81,40 +79,15 @@ class SearchViewModel(
                 }
                 is RecipesSearchResult.NothingFound -> RecipesScreenState.NothingFound
                 is RecipesSearchResult.Error ->  {
-                    RecipesScreenState.Error(context.getString(searchRecipesResult.error.messageRes))
-                    // получаем во ViewModel - AppError
-                    //mapErrorToState(searchRecipesResult.error)
+                    RecipesScreenState.Error(
+                        errorText = context.getString(searchRecipesResult.error.messageRes),
+                        errorImageId = searchRecipesResult.error.imageRes
+                    )
                 }
 
             }
         return state
     }
-
-    /*private fun mapErrorToState(appError: AppError): RecipesScreenState {
-        return when (appError) {
-            AppError.BadRequest -> RecipesScreenState.BadRequestError(
-                errorText = context.getString(appError.messageRes)
-            )
-            AppError.Unauthorized -> RecipesScreenState.UnauthorizedError(
-                errorText = context.getString(appError.messageRes)
-            )
-            AppError.PaymentRequired -> RecipesScreenState.PaymentRequiredError(
-                errorText = context.getString(appError.messageRes)
-            )
-            AppError.Forbidden -> RecipesScreenState.ForbiddenError(
-                errorText = context.getString(appError.messageRes)
-            )
-            AppError.NotFound -> RecipesScreenState.NotFoundError(
-                errorText = context.getString(appError.messageRes)
-            )
-            AppError.InternalServer -> RecipesScreenState.InternalServerError(
-                errorText = context.getString(appError.messageRes)
-            )
-            AppError.Unknown -> RecipesScreenState.UnknownError(
-                errorText = context.getString(appError.messageRes)
-            )
-        }
-    }*/
 
     private fun setScreenState(newState: RecipesScreenState) {
         _searchScreenState.postValue(newState)

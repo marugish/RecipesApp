@@ -48,7 +48,7 @@
     <string name="trending_search">Trending Search</string>
 
     <!-- Errors -->
-    <string name="no_internet">No internet</string>
+    <string name="recipes_not_found">Рецепты не найдены</string>
 
     <!-- На русском -->
     <string name="bad_request">Ошибка 400\nНеверный запрос. Попробуйте изменить параметры.</string>
@@ -58,5 +58,6 @@
     <string name="not_found">Ошибка 404\nРесурс не найден.</string>
     <string name="internal_server">Ошибка 500\nВнутренняя ошибка сервера. Повторите попытку позже.</string>
     <string name="unknown">Неизвестная ошибка.</string>
+    <string name="no_internet">Нет соединения. Проверьте Интернет.</string>
 
 </resources>

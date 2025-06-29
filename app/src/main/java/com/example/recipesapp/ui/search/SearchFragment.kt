@@ -40,15 +40,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         binding.searchTextInput.addTextChangedListener(
             afterTextChanged = { s ->
                 if (s.isNullOrEmpty()) {
-                    // в отдельную функцию
-                    binding.trendingSearchLayout.visibility = View.VISIBLE
-                    binding.recommendationLayout.visibility = View.VISIBLE
+                    trendingAndRecommendationVisibility(isShown = true)
 
+                    recyclerViewVisibility()
+                    errorLayoutVisibility()
                 } else {
-                    // в отдельную функцию
-                    binding.trendingSearchLayout.visibility = View.GONE
-                    binding.recommendationLayout.visibility = View.GONE
+                    trendingAndRecommendationVisibility()
 
+                    notFoundLayoutVisibility()
+                    adapter.updateRecipesList(emptyList())
                 }
                 viewModel.searchDebounce(changedText = s?.toString() ?: "")
                 /*binding.searchClearButton.visibility = clearButtonVisibility(s)
@@ -72,32 +72,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             render(it)
         }
 
-
-            /*binding.searchBar.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s.isNullOrEmpty()) {
-                    setSearchIcon()
-                    binding.searchPlaceholder.visibility = View.VISIBLE
-                    recyclerViewVisibility(false)
-                    vacancyCountVisibility(false)
-                    errorMessageVisibility()
-                    isPaginationLoader = false
-                } else {
-                    setClearIcon()
-                    binding.searchPlaceholder.visibility = View.GONE
-                    isPaginationLoader = false
-                    adapter.updateVacancyList(emptyList())
-                    errorMessageVisibility()
-                    vacancyCountVisibility()
-                }
-                viewModel.searchVacancies(searchedText = s.toString())
-            }
-        })*/
-
     }
 
     private fun render(state: RecipesScreenState) {
@@ -105,12 +79,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             is RecipesScreenState.Loading -> showLoading()
             is RecipesScreenState.Content -> showContent(state.recipesList, state.foundRecipesCount)
             is RecipesScreenState.NothingFound -> showEmpty()
-
-            // подумать про ошибки
-            // не нужно столько состояний!!!!!!!
-            is RecipesScreenState.Error -> showError(state.errorText)
-            //is RecipesScreenState.InternalServerError -> showError(state.errorText)
-            //is RecipesScreenState.UnknownError -> showError(state.errorText)
+            is RecipesScreenState.Error -> showError(state.errorText, state.errorImageId)
         }
     }
 
@@ -118,10 +87,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         adapter.updateRecipesList(recipesList)
         recyclerViewVisibility(isShown = true)
         progressBarContentVisibility()
+        errorLayoutVisibility()
 
+        notFoundLayoutVisibility()
         //recipesCountVisibility(isShown = true, count = foundVacanciesCount)
         //progressBarPaginationVisibility()
-        //errorMessageVisibility()
     }
 
     private fun showLoading() {
@@ -130,13 +100,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     }
 
     private fun showEmpty() {
-        TODO("Not yet implemented")
+        progressBarContentVisibility()
+        notFoundLayoutVisibility(isShown = true)
     }
 
-    private fun showError(errorText: String) {
+    private fun showError(errorText: String, errorImageId: Int) {
+        progressBarContentVisibility()
         errorLayoutVisibility(isShown = true)
         binding.errorText.text = errorText
-        // + картинка
+        binding.errorImage.setImageResource(errorImageId)
     }
 
     private fun recyclerViewVisibility(isShown: Boolean = false) {
@@ -149,6 +121,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun errorLayoutVisibility(isShown: Boolean = false) {
         binding.searchError.isVisible = isShown
+    }
+
+    private fun notFoundLayoutVisibility(isShown: Boolean = false) {
+        binding.searchNotFound.isVisible = isShown
+    }
+
+    private fun trendingAndRecommendationVisibility(isShown: Boolean = false) {
+        binding.trendingSearchLayout.isVisible = isShown
+        binding.recommendationLayout.isVisible = isShown
     }
 
 }

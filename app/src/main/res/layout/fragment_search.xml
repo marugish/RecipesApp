@@ -37,8 +37,6 @@
             app:spanCount="3"
             tools:listitem="@layout/type_meal_item"
             android:visibility="visible"/>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -94,6 +92,7 @@
             android:visibility="gone">
 
             <ImageView
+                android:id="@+id/error_image"
                 android:layout_width="wrap_content"
                 android:layout_height="224dp"
                 android:src="@drawable/ic_error_unknown2"/>
@@ -102,6 +101,29 @@
                 android:id="@+id/error_text"
                 android:layout_width="match_parent"
                 android:text="@string/unknown"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/default_margin"
+                style="@style/semi_bold_title_text_style" />
+        </LinearLayout>
+
+        <!-- Страница Не найдено рецептов -->
+        <LinearLayout
+            android:id="@+id/search_not_found"
+            style="@style/vertical_linear_layout"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/not_found_image"
+                android:layout_width="wrap_content"
+                android:layout_height="224dp"
+                android:src="@drawable/ic_not_found"/>
+
+            <TextView
+                android:id="@+id/not_found_text"
+                android:layout_width="match_parent"
+                android:text="@string/recipes_not_found"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/default_margin"
