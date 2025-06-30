@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Экраны -->
+    <!--<string name="search">Поиск</string>
+    <string name="home">Дом</string>
+    <string name="explore">Обзор</string>
+    <string name="favorites">Избранное</string>
+    <string name="arcticles">Статьи</string> -->
+
+    <!-- Вход -->
+    <!--<string name="welcome">Добро пожаловать!</string>
+    <string name="sign_in_to_continue">Войдите в систему, чтобы продолжить</string>
+    <string name="password">Пароль</string>
+    <string name="remember_me">Запомнить меня</string>
+    <string name="forgot_password"><u>Забыли пароль?</u></string>
+    <string name="or_login_with">Или войдите с помощью</string>
+    <string name="dont_have_an_account">У вас нет учётной записи?</string>
+    <string name="sign_in_title">Войти</string>
+    <string name="sign_in"><u>Войти</u></string> -->
+
+    <!-- Регистрация -->
+    <!--<string name="create_account">Создать аккаунт</string>
+    <string name="enter_details">Пожалуйста, введите данные для регистрации</string>
+    <string name="sign_up_to_continue">Зарегистрируйтесь, чтобы продолжить</string>
+    <string name="full_name">ФИО</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="or_register_with">Или зарегистрируйтесь с помощью</string>
+    <string name="already_have_account">У вас уже есть учётная запись?</string>
+    <string name="passwords_dont_match">Пароли не совпадают</string>
+    <string name="sign_up"><u>Зарегистрируйтесь</u></string>
+    <string name="sign_up_title">Регистрация</string>-->
+
+    <!-- Профиль -->
+    <!--<string name="add_photo">Добавить фотографию</string>
+    <string name="skip_for_now">Пропустить</string>
+    <string name="profile">Профиль</string>
+    <string name="profile_detail">Выберите фотографию для профиля. Позже вы сможете изменить её.</string>
+    <string name="reset_password">Сбросить пароль</string>
+
+    <string name="recommendation">Рекомендации</string>
+    <string name="trending_search">Поиск по трендам</string>
+    <string name="recipes_found">Найденные рецепты</string>
+    <string name="level">Сложность</string> -->
+
+    <!-- Ошибки -->
+    <!--<string name="recipes_not_found">Рецепты не найдены</string>
+    <string name="bad_request">Ошибка 400\nНеверный запрос. Попробуйте изменить параметры.</string>
+    <string name="unauthorized">Ошибка 401\nВы не авторизованы. Пожалуйста, войдите в аккаунт.</string>
+    <string name="payment_required">Ошибка 402\nИсчерпан лимит запросов. Повторите позже.</string>
+    <string name="forbidden">Ошибка 403\nДоступ запрещён</string>
+    <string name="not_found">Ошибка 404 Ресурс не найден.</string>
+    <string name="internal_server">Ошибка 500 Внутренняя ошибка сервера. Повторите попытку позже.</string>
+    <string name="unknown">Неизвестная ошибка.</string>
+    <string name="no_internet">Нет соединения. Проверьте Интернет.</string>
+
+    <plurals name="recipes_count">
+        <item quantity="one">%s рецепт найден</item>
+        <item quantity="few">%s рецепта найдено</item>
+        <item quantity="many">%s рецептов найдено</item>
+        <item quantity="other">%s рецептов найдено</item>
+    </plurals> -->
+
+</resources>
