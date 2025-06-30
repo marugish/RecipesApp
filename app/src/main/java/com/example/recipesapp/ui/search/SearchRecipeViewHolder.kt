@@ -1,11 +1,15 @@
 package com.example.recipesapp.ui.search
 
+import android.text.Html
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.SearchItemBinding
 import com.example.recipesapp.domain.search.model.Recipe
+import com.example.recipesapp.util.RecipeUtils.getDifficultyLevel
+import com.example.recipesapp.util.RecipeUtils.getRecipeRating
 
 class SearchRecipeViewHolder(
     private val binding: SearchItemBinding
@@ -13,9 +17,14 @@ class SearchRecipeViewHolder(
 
     fun bind(model: Recipe) {
         binding.recipeName.text = model.title
-        //binding.rating.text = model.
-        //binding.level.text =
-        // binding.summary.text =
+        binding.rating.text = getRecipeRating(model.score, model.likes) // String.format("%d (%d%%)", model.likes, model.score.toInt())
+
+        // не до конца высчитала
+        //Log.i("myTest", "size = ${model.ingredientsList.size}")
+        binding.difficultyLevel.text =
+            getDifficultyLevel(model.readyInMinutes, model.ingredientsList.size).label
+
+        binding.summary.text = Html.fromHtml(model.summary, Html.FROM_HTML_MODE_LEGACY)
 
 
         //val logoUrl: String = model.image

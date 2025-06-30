@@ -47,4 +47,25 @@
     <string name="recipes_found">Recipes found</string>
     <string name="trending_search">Trending Search</string>
 
+    <!-- Errors -->
+    <string name="recipes_not_found">Рецепты не найдены</string>
+
+    <!-- На русском -->
+    <string name="bad_request">Ошибка 400\nНеверный запрос. Попробуйте изменить параметры.</string>
+    <string name="unauthorized">Ошибка 401\nВы не авторизованы. Пожалуйста, войдите в аккаунт.</string>
+    <string name="payment_required">Ошибка 402\nИсчерпан лимит запросов. Повторите позже.</string>
+    <string name="forbidden">Ошибка 403\nДоступ запрещён.</string>
+    <string name="not_found">Ошибка 404\nРесурс не найден.</string>
+    <string name="internal_server">Ошибка 500\nВнутренняя ошибка сервера. Повторите попытку позже.</string>
+    <string name="unknown">Неизвестная ошибка.</string>
+    <string name="no_internet">Нет соединения. Проверьте Интернет.</string>
+
+
+    <plurals name="recipes_count">
+        <item quantity="one">%s recipe found</item>
+        <item quantity="few">%s recipes found</item>
+        <item quantity="many">%s recipes found</item>
+        <item quantity="other">%s recipes found</item>
+    </plurals>
+
 </resources>

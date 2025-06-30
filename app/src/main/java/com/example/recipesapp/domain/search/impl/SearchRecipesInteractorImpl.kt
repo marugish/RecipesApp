@@ -12,20 +12,23 @@ class SearchRecipesInteractorImpl(private val searchRecipesRepository: SearchRec
         query: String,
         offset: Int,
         number: Int,
-        addRecipeInformation: Boolean
+        addRecipeInformation: Boolean,
+        fillIngredients: Boolean
     ): Flow<RecipesSearchResult> {
 
         val result = searchRecipesRepository.searchRecipes(
             query = query,
             offset = offset,
             number = number,
-            addRecipeInformation = addRecipeInformation
+            addRecipeInformation = addRecipeInformation,
+            fillIngredients = fillIngredients
         ).map { recipes ->
             when (recipes) {
                 is RecipesStateLoad.Loading -> RecipesSearchResult.Loading
                 is RecipesStateLoad.Error -> RecipesSearchResult.Error(
-                    errorCode = recipes.error.code,
-                    message = recipes.error.message
+                    error = recipes.error
+                    //errorCode = recipes.error.code,
+                    //message = recipes.error.message
                 )
                 is RecipesStateLoad.Success -> {
                     if (recipes.recipesFound != null && recipes.recipesFound.recipesList.isNotEmpty()) {

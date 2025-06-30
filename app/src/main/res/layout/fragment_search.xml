@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/vertical_linear_layout"
-
     android:padding="@dimen/default_margin"
-
     tools:context=".ui.search.SearchFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,8 +37,6 @@
             app:spanCount="3"
             tools:listitem="@layout/type_meal_item"
             android:visibility="visible"/>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -70,6 +66,7 @@
         android:visibility="gone">
 
         <TextView
+            android:id="@+id/recipes_count"
             style="@style/semi_bold_title_text_style"
             android:text="@string/recipes_found" />
 
@@ -83,6 +80,65 @@
             android:visibility="visible"/>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Страница Ошибок -->
+        <LinearLayout
+            android:id="@+id/search_error"
+            style="@style/vertical_linear_layout"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="wrap_content"
+                android:layout_height="224dp"
+                android:src="@drawable/ic_error_unknown2"/>
+
+            <TextView
+                android:id="@+id/error_text"
+                android:layout_width="match_parent"
+                android:text="@string/unknown"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/default_margin"
+                style="@style/semi_bold_title_text_style" />
+        </LinearLayout>
+
+        <!-- Страница Не найдено рецептов -->
+        <LinearLayout
+            android:id="@+id/search_not_found"
+            style="@style/vertical_linear_layout"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/not_found_image"
+                android:layout_width="wrap_content"
+                android:layout_height="224dp"
+                android:src="@drawable/ic_not_found"/>
+
+            <TextView
+                android:id="@+id/not_found_text"
+                android:layout_width="match_parent"
+                android:text="@string/recipes_not_found"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/default_margin"
+                style="@style/semi_bold_title_text_style" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/main_color"
+            android:visibility="gone" />
+    </FrameLayout>
 
 </LinearLayout>
 

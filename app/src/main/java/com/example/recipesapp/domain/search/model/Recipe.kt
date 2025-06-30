@@ -8,24 +8,39 @@ data class Recipe(
     val readyInMinutes: Int,
     val servings: Int,
     val summary: String,
+    val score: Float,
+    val likes: Int,
+    val ingredientsList: List<Ingredient>,
 
     // val veryPopular: Boolean,
     // val weightWatcherSmartPoints: Int,
     /*"preparationMinutes": null,
     "cookingMinutes": null,
-    "aggregateLikes": 12,
-    "healthScore": 23.0,
-    "cuisines": [
-    "Mediterranean",
-    "European",
-    "Greek"
-    ],
-    "dishTypes": [
-    "lunch",
-    "main course",
-    "main dish",
-    "dinner"
-    ],
-    "spoonacularScore": 79.13444519042969,
-    "spoonacularSourceUrl": "https://spoonacular.com/lamb-burgers-with-tzatziki-sauce-649195" */
+   */
+)
+
+data class Ingredient(
+    val id: Int,
+    //val aisle: String,
+    val image: String,
+    //val consistency: String,
+    val name: String,
+    val nameClean: String,
+    val original: String,
+    val originalName: String,
+    val amount: Double,
+    val unit: String,
+    //val meta: List<String>,
+    /*val measures: Measures*/ // пока убрала
+)
+
+data class Measures(
+    val us: MeasureUnit,
+    val metric: MeasureUnit
+)
+
+data class MeasureUnit(
+    val amount: Double,
+    val unitShort: String,
+    val unitLong: String
 )
