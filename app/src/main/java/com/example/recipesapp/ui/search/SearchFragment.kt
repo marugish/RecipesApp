@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.BaseFragment
+import com.example.recipesapp.R
 import com.example.recipesapp.presentation.search.SearchViewModel
 import com.example.recipesapp.databinding.FragmentSearchBinding
 import com.example.recipesapp.domain.search.model.Recipe
 import com.example.recipesapp.presentation.search.RecipesScreenState
+import com.example.recipesapp.util.RecipeUtils
 import com.example.recipesapp.util.hideKeyboard
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -90,8 +92,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         errorLayoutVisibility()
 
         notFoundLayoutVisibility()
-        //recipesCountVisibility(isShown = true, count = foundVacanciesCount)
+        recipesCountVisibility(foundRecipesCount)
+
         //progressBarPaginationVisibility()
+    }
+
+    private fun recipesCountVisibility(count: Int) {
+        binding.recipesCount.text = String.format(
+            resources.getQuantityString(R.plurals.recipes_count, count),
+            RecipeUtils.divideIntoDigits(count)
+        )
     }
 
     private fun showLoading() {

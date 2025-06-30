@@ -1,8 +1,9 @@
 package com.example.recipesapp.util
 
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.util.Locale
 import kotlin.math.round
-
 
 object RecipeUtils {
 
@@ -17,10 +18,8 @@ object RecipeUtils {
              ингредиентов > 10. */
     fun getDifficultyLevel(readyInMinutes: Int, ingredientsCount: Int): DifficultyLevel {
         return when {
-            // добавить ingredientsCount
-            // ...
-            readyInMinutes <= 20 -> DifficultyLevel.EASY
-            readyInMinutes in 21..45 -> DifficultyLevel.MIDDLE
+            readyInMinutes <= 20 && ingredientsCount <= 5 -> DifficultyLevel.EASY
+            readyInMinutes <= 45 && ingredientsCount <= 10 -> DifficultyLevel.MIDDLE
             else -> DifficultyLevel.HARD
         }
     }
@@ -33,5 +32,13 @@ object RecipeUtils {
 
     fun getRecipeRating(score: Float, likes: Int): String {
         return convertPercentToFiveScale(score) + " ($likes+)"
+    }
+
+    fun divideIntoDigits(number: Int?): String {
+        if (number == null) return ""
+        val russianLocale = Locale("ru", "RU")
+        val russianSymbols = DecimalFormatSymbols(russianLocale)
+        val russianFormatter = DecimalFormat("#,###.##", russianSymbols)
+        return russianFormatter.format(number)
     }
 }

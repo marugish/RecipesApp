@@ -66,6 +66,7 @@
         android:visibility="gone">
 
         <TextView
+            android:id="@+id/recipes_count"
             style="@style/semi_bold_title_text_style"
             android:text="@string/recipes_found" />
 

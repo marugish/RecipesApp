@@ -60,4 +60,12 @@
     <string name="unknown">Неизвестная ошибка.</string>
     <string name="no_internet">Нет соединения. Проверьте Интернет.</string>
 
+
+    <plurals name="recipes_count">
+        <item quantity="one">%s recipe found</item>
+        <item quantity="few">%s recipes found</item>
+        <item quantity="many">%s recipes found</item>
+        <item quantity="other">%s recipes found</item>
+    </plurals>
+
 </resources>
