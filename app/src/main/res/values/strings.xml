@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecipesApp</string>
+    <string name="app_name" translatable="false">RecipesApp</string>
     <!-- Screens -->
     <string name="search">Search</string>
     <string name="home">Home</string>
@@ -10,7 +10,7 @@
     <!-- SignIn -->
     <string name="welcome">Welcome!</string>
     <string name="sign_in_to_continue">Sign in to continue</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember me</string>
     <string name="forgot_password"><u>Forgot password?</u></string>
@@ -36,29 +36,29 @@
     <string name="skip_for_now">Skip for now</string>
     <string name="profile">Profile</string>
     <string name="profile_detail">Select a profile photo. Later you can change it.</string>
-    <string name="old_password">Old Password</string>
-    <string name="new_password">New password</string>
+    <string name="old_password" translatable="false">Old Password</string>
+    <string name="new_password" translatable="false">New password</string>
     <string name="reset_password">Reset Password</string>
 
-    <string name="default_web_client_id">433801035424-miod1d6ns24l6bf46psmce6hkb6qtlc8.apps.googleusercontent.com</string>
-    <string name="recommendation">Recommendation</string>
-    <string name="recipeImage">recipeImage</string>
-    <string name="level">Level</string>
-    <string name="recipes_found">Recipes found</string>
+    <string name="default_web_client_id" translatable="false">433801035424-miod1d6ns24l6bf46psmce6hkb6qtlc8.apps.googleusercontent.com</string>
+    <string name="recommendation">Recommendations</string>
     <string name="trending_search">Trending Search</string>
+    <string name="recipes_found">Recipes found</string>
+    <string name="recipeImage" translatable="false">recipeImage</string>
+    <string name="level">Level</string>
 
     <!-- Errors -->
-    <string name="recipes_not_found">Рецепты не найдены</string>
+    <string name="recipes_not_found">Recipes not found</string>
 
     <!-- На русском -->
-    <string name="bad_request">Ошибка 400\nНеверный запрос. Попробуйте изменить параметры.</string>
-    <string name="unauthorized">Ошибка 401\nВы не авторизованы. Пожалуйста, войдите в аккаунт.</string>
-    <string name="payment_required">Ошибка 402\nИсчерпан лимит запросов. Повторите позже.</string>
-    <string name="forbidden">Ошибка 403\nДоступ запрещён.</string>
-    <string name="not_found">Ошибка 404\nРесурс не найден.</string>
-    <string name="internal_server">Ошибка 500\nВнутренняя ошибка сервера. Повторите попытку позже.</string>
-    <string name="unknown">Неизвестная ошибка.</string>
-    <string name="no_internet">Нет соединения. Проверьте Интернет.</string>
+    <string name="bad_request">Error 400\nBad Request. Try to change the parameters.</string>
+    <string name="unauthorized">Error 401\nYou are not authorized. Please log in to your account.</string>
+    <string name="payment_required">Error 402\nRequest limit exceeded. Please try again later.</string>
+    <string name="forbidden">Error 403\nAccess denied.</string>
+    <string name="not_found">Error 404\nThe resource was not found.</string>
+    <string name="internal_server">Error 500\nInternal server error. Please try again later.</string>
+    <string name="unknown">Unknown error.</string>
+    <string name="no_internet">No connection. Check the Internet.</string>
 
 
     <plurals name="recipes_count">
