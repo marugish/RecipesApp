@@ -26,10 +26,10 @@ class SearchRecipeViewHolder(
 
         binding.summary.text = Html.fromHtml(model.summary, Html.FROM_HTML_MODE_LEGACY)
 
-
-        //val logoUrl: String = model.image
+        // 312x231 - получаем от модели
+        fun getCoverArtwork() = model.image.replaceAfterLast('-',"480x360.jpg")
         Glide.with(itemView.context)
-            .load(model.image)
+            .load(getCoverArtwork())
             .placeholder(R.drawable.food_placeholder)
             .centerCrop()
             .transform(RoundedCorners(itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius_image)))
