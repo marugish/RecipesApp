@@ -9,7 +9,7 @@ import com.example.recipesapp.databinding.StepItemBinding
 @SuppressLint("NotifyDataSetChanged")
 class MethodAdapter(
     private var steps: List<String> = emptyList(),
-    private val clickListener: (String) -> Unit
+    //private val clickListener: (String) -> Unit
 ) : RecyclerView.Adapter<MethodViewHolder>() {
 
     fun updateStepsList(items: List<String>) {
@@ -26,10 +26,10 @@ class MethodAdapter(
 
     override fun onBindViewHolder(holder: MethodViewHolder, position: Int) {
         holder.bind(steps[position], position)
-        holder.itemView.setOnClickListener {
+        /*holder.itemView.setOnClickListener {
             clickListener(steps[position])
             notifyDataSetChanged()
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {

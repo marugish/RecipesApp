@@ -23,7 +23,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private val adapter = SearchRecipeAdapter(clickListener = { recipe -> showRecipeDetail(recipe) })
     private fun showRecipeDetail(recipe: Recipe) {
         val bundle = Bundle()
-        bundle.putInt("recipe", recipe.id)
+        bundle.putSerializable("recipe", recipe)
         findNavController().navigate(R.id.action_searchFragment_to_recipeDetailsFragment, bundle)
     }
 

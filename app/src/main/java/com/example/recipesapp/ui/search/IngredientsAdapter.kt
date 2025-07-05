@@ -10,7 +10,7 @@ import com.example.recipesapp.domain.search.model.Ingredient
 @SuppressLint("NotifyDataSetChanged")
 class IngredientsAdapter(
     private var ingredients: List<Ingredient> = emptyList(),
-    private val clickListener: (Ingredient) -> Unit
+    //private val clickListener: (Ingredient) -> Unit
 ) : RecyclerView.Adapter<IngredientsViewHolder>() {
 
     fun updateIngredientsList(items: List<Ingredient>) {
@@ -27,10 +27,10 @@ class IngredientsAdapter(
 
     override fun onBindViewHolder(holder: IngredientsViewHolder, position: Int) {
         holder.bind(ingredients[position])
-        holder.itemView.setOnClickListener {
+        /*holder.itemView.setOnClickListener {
             clickListener(ingredients[position])
             notifyDataSetChanged()
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
