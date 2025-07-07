@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.R
@@ -22,8 +23,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private val adapter = SearchRecipeAdapter(clickListener = { recipe -> showRecipeDetail(recipe) })
     private fun showRecipeDetail(recipe: Recipe) {
         val bundle = Bundle()
-        bundle.putInt("recipe", recipe.id)
-        //findNavController().navigate(R.id.action_searchFragment_to_recipeFragment, bundle)
+        bundle.putSerializable("recipe", recipe)
+        findNavController().navigate(R.id.action_searchFragment_to_recipeDetailsFragment, bundle)
     }
 
     private val viewModel by viewModel<SearchViewModel>()

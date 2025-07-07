@@ -1,5 +1,7 @@
 package com.example.recipesapp.domain.search.model
 
+import java.io.Serializable
+
 data class Recipe(
     val id: Int,
     val image: String,
@@ -17,4 +19,4 @@ data class Recipe(
     /*"preparationMinutes": null,
     "cookingMinutes": null,
    */
-)
+) : Serializable

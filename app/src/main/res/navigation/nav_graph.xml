@@ -33,7 +33,11 @@
         android:id="@+id/searchFragment"
         android:name="com.example.recipesapp.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.recipesapp.ui.home.HomeFragment"
@@ -68,4 +72,9 @@
         android:name="com.example.recipesapp.ui.auth.ResetPasswordFragment"
         android:label="fragment_reset_password"
         tools:layout="@layout/fragment_reset_password" />
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.example.recipesapp.ui.search.RecipeDetailsFragment"
+        android:label="fragment_recipe_details"
+        tools:layout="@layout/fragment_recipe_details" />
 </navigation>
