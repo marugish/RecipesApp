@@ -6,7 +6,6 @@ import com.example.recipesapp.data.dto.RecipeDto
 import com.example.recipesapp.data.dto.TriviaDto
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -17,7 +16,8 @@ interface ApiService {
         @Query("offset") offset: Int,
         @Query("number") number: Int,
         @Query("addRecipeInformation") addRecipeInformation: Boolean,
-        @Query("fillIngredients") fillIngredients: Boolean
+        @Query("fillIngredients") fillIngredients: Boolean,
+        @Query("addRecipeInstructions") addRecipeInstructions: Boolean
     ): Response<RecipesResponse>
 
     // почитать про suspend

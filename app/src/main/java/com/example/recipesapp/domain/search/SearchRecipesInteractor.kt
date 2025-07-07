@@ -9,6 +9,7 @@ interface SearchRecipesInteractor {
         offset: Int,
         number: Int,
         addRecipeInformation: Boolean,
-        fillIngredients: Boolean
+        fillIngredients: Boolean,
+        addRecipeInstructions: Boolean
     ): Flow<RecipesSearchResult>
 }
