@@ -15,7 +15,8 @@ class SearchRecipesInteractorImpl(private val searchRecipesRepository: SearchRec
         offset: Int,
         number: Int,
         addRecipeInformation: Boolean,
-        fillIngredients: Boolean
+        fillIngredients: Boolean,
+        addRecipeInstructions: Boolean
     ): Flow<RecipesSearchResult> {
 
         val result = searchRecipesRepository.searchRecipes(
@@ -23,7 +24,8 @@ class SearchRecipesInteractorImpl(private val searchRecipesRepository: SearchRec
             offset = offset,
             number = number,
             addRecipeInformation = addRecipeInformation,
-            fillIngredients = fillIngredients
+            fillIngredients = fillIngredients,
+            addRecipeInstructions = addRecipeInstructions
         ).map { recipes ->
             when (recipes) {
                 is RecipesStateLoad.Loading -> RecipesSearchResult.Loading

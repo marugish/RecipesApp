@@ -5,6 +5,7 @@ kotlin = "1.9.24"
 coreKtx = "1.13.1"
 appcompat = "1.6.1"
 activity = "1.10.1"
+recyclerview = "1.4.0"
 navigation = "2.8.9"
 fragmentKtx = "1.8.6"
 room = "2.6.1"#"2.7.1"
@@ -24,12 +25,15 @@ coroutines = "1.9.0"
 material = "1.12.0"
 constraintlayout = "2.2.1"
 lifecycle = "2.8.7"
+kotlin1924 = "1.9.24"
+legacy-support-v4 = "1.0.0"
 
 [libraries]
 # AndroidX
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 # AndroidX Navigation
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
@@ -80,5 +84,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 # UI Tests
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "extJunit" }
+legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support-v4" }
 
 [plugins]
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin1924" }

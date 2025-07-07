@@ -72,7 +72,8 @@ class SearchViewModel(
                         offset = 0,
                         number = 10, // возможно, нужно сделать null, если без пагинации
                         addRecipeInformation = true,
-                        fillIngredients = true // ингредиенты
+                        fillIngredients = true, // ингредиенты
+                        addRecipeInstructions = true // инструкции
                     )
 
                     .collect { searchRecipesResult ->

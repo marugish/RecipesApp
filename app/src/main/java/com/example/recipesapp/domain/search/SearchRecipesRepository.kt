@@ -10,7 +10,8 @@ interface SearchRecipesRepository {
         offset: Int,
         number: Int,
         addRecipeInformation: Boolean,
-        fillIngredients: Boolean
+        fillIngredients: Boolean,
+        addRecipeInstructions: Boolean
     ): Flow<RecipesStateLoad>
 
     fun searchRecommendations(number: Int): Flow<RecommendationsStateLoad>

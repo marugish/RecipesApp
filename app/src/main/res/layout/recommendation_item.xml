@@ -52,8 +52,8 @@
     <TextView
         android:id="@+id/recipeName"
         style="@style/subtitle_text_style"
-        android:textSize="16sp"
         tools:text="Recipe Name"
+        android:textSize="16sp"
         android:ellipsize="end"
         android:maxLines="1"
         android:layout_marginTop="4dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ratingImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_star"
@@ -71,11 +71,10 @@
     <TextView
         android:id="@+id/rating"
         style="@style/subtitle_text_style"
+        tools:text="4.5 (19+)"
         android:textSize="@dimen/text_min"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView"
-        app:layout_constraintBottom_toBottomOf="@id/imageView"
-        tools:text="4.5 (19+)" />
-
+        app:layout_constraintStart_toEndOf="@id/ratingImage"
+        app:layout_constraintTop_toTopOf="@id/ratingImage"
+        app:layout_constraintBottom_toBottomOf="@id/ratingImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>

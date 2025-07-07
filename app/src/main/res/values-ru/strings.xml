@@ -40,7 +40,14 @@
     <string name="recommendation">Рекомендации</string>
     <string name="trending_search">Поиск по трендам</string>
     <string name="recipes_found">Найденные рецепты</string>
-    <string name="level">Сложность</string> -->
+    <string name="level">Сложность</string>
+    <string name="ingredients">Ингредиенты</string>
+    <string name="step">Шаг 1</string>
+    <string name="recipe_name">Название рецепта</string>
+    <string name="method">Способ приготовления</string>
+    <string name="time">45 мин.</string>
+    <string name="servings">Порции: 4</string>
+    <string name="rating">4.5 (19+)</string>-->
 
     <!-- Ошибки -->
     <!--<string name="recipes_not_found">Рецепты не найдены</string>

@@ -46,6 +46,13 @@
     <string name="recipes_found">Recipes found</string>
     <string name="recipeImage" translatable="false">recipeImage</string>
     <string name="level">Level</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="step">Step 1</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="method">Method</string>
+    <string name="time">45 min</string>
+    <string name="servings">Servings: 4</string>
+    <string name="rating">4.5 (19+)</string>
 
     <!-- Errors -->
     <string name="recipes_not_found">Recipes not found</string>

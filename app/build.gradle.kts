@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.recyclerview)
 
     // AndroidX Navigation
     implementation(libs.androidx.navigation.fragment)
@@ -60,6 +61,7 @@ dependencies {
 
     // AndroidX Room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.legacy.support.v4)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     //implementation("androidx.room:room-runtime:2.7.1")

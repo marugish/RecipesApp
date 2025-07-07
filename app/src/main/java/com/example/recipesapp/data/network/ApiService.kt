@@ -16,7 +16,8 @@ interface ApiService {
         @Query("offset") offset: Int,
         @Query("number") number: Int,
         @Query("addRecipeInformation") addRecipeInformation: Boolean,
-        @Query("fillIngredients") fillIngredients: Boolean
+        @Query("fillIngredients") fillIngredients: Boolean,
+        @Query("addRecipeInstructions") addRecipeInstructions: Boolean
     ): Response<RecipesResponse>
 
     // Поиск рекомендаций
