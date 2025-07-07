@@ -13,6 +13,7 @@ data class Recipe(
     val score: Float,
     val likes: Int,
     val ingredientsList: List<Ingredient>,
+    val instructionsList: List<Instructions>
 
     // val veryPopular: Boolean,
     // val weightWatcherSmartPoints: Int,
