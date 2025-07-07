@@ -23,7 +23,8 @@ class SearchRecipesRepositoryImpl(
         offset: Int,
         number: Int,
         addRecipeInformation: Boolean,
-        fillIngredients: Boolean
+        fillIngredients: Boolean,
+        addRecipeInstructions: Boolean
     ): Flow<RecipesStateLoad> {
         return flow {
             // Попытка загрузки
@@ -40,7 +41,8 @@ class SearchRecipesRepositoryImpl(
                     offset = offset,
                     number = number,
                     addRecipeInformation = addRecipeInformation,
-                    fillIngredients = fillIngredients
+                    fillIngredients = fillIngredients,
+                    addRecipeInstructions = addRecipeInstructions
                 ).call()
             }.getOrNull()
             // Обрабатываем результат

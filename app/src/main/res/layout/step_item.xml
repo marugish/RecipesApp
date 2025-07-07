@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="@dimen/corner_radius_image"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/grey">
 
-    <TextView
-        android:id="@+id/stepNumber"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/step"
-        android:textSize="12sp"
-        style="@style/subtitle_text_style" />
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="6dp">
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Очень длинное описание рецепта......Очень длинное описание рецепта......Очень длинное описание рецепта...Очень длинное описание рецепта...Очень длинное описание рецепта..."
-        style="@style/small_text_style"
-        android:textColor="@color/light_grey"
-        android:lineSpacingExtra="4dp"
-        android:layout_marginBottom="4dp"/>
-</LinearLayout>
+        <TextView
+            android:id="@+id/stepNumber"
+            android:layout_width="match_parent"
+            style="@style/subtitle_text_style"
+            android:text="@string/step"
+            android:textSize="@dimen/text_12"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            style="@style/small_text_style"
+            android:text="Очень длинное описание рецепта......Очень длинное описание рецепта......Очень длинное описание рецепта...Очень длинное описание рецепта...Очень длинное описание рецепта..."
+            android:textColor="@color/light_grey"
+            android:lineSpacingExtra="4dp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

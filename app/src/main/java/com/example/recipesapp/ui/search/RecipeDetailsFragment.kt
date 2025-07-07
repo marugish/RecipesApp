@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.recipesapp.BaseFragment
@@ -24,7 +25,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>() {
     private val viewModel by viewModel<RecipeDetailsViewModel>()
 
     private val ingredientAdapter = IngredientsAdapter()
-    private val methodAdapter = MethodAdapter()
+    private val concatAdapter = ConcatAdapter()
 
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentRecipeDetailsBinding {
         return FragmentRecipeDetailsBinding.inflate(inflater, container, false)
@@ -39,7 +40,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>() {
 
         // Способ приготовления
         binding.methodRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.methodRecyclerView.adapter = methodAdapter
+        binding.methodRecyclerView.adapter = concatAdapter
 
         // Получаем аргументы
         arguments?.let { bundle ->
@@ -73,21 +74,23 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>() {
 
             // Recipe name
             binding.recipeName.text = recipe.title
-            // Ingredients
-            ingredientAdapter.updateIngredientsList(recipe.ingredientsList)
-            binding.ingredientRecyclerView.isVisible = true
             // Rating + level
             binding.rating.text = getRecipeRating(recipe.score, recipe.likes)
             binding.difficultyLevel.text = getDifficultyLevel(recipe.readyInMinutes, recipe.ingredientsList.size).label
+            // Servings + Time
+            binding.servings.text = String.format("Servings: %d", recipe.servings)
+            binding.time.text = String.format("%d min", recipe.readyInMinutes)
+            // Method
+            recipe.instructionsList.forEach { instruction ->
+                if (instruction.name.isNotBlank()) {
+                    concatAdapter.addAdapter(InstructionHeaderAdapter(instruction.name))
+                }
+                concatAdapter.addAdapter(StepsAdapter(instruction.steps))
+            }
+            binding.methodRecyclerView.isVisible = true
+            // Ingredients
+            ingredientAdapter.updateIngredientsList(recipe.ingredientsList)
+            binding.ingredientRecyclerView.isVisible = true
         }
-
-
-        // servings
-        // ...
-        // time
-        // ...
-        // method
-        // ...
     }
-
 }

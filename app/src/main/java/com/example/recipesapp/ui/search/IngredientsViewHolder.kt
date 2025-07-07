@@ -12,10 +12,17 @@ class IngredientsViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(model: Ingredient) {
-        binding.ingredientText.text = model.name // необходимо понять, какое название указать
 
+        binding.ingredientText.text = String.format("%s", model.original)/*String.format(
+            "%d %s %s",
+            model.measures.metric.amount.toInt(),
+            model.measures.metric.unitShort,
+            model.name
+        ) */
+
+        fun getCoverArtwork() = "https://img.spoonacular.com/ingredients_250x250/" + model.image
         Glide.with(itemView.context)
-            .load(model.image)
+            .load(getCoverArtwork())    //model.image)
             .placeholder(R.drawable.ingredient_placeholder_2)
             .centerCrop()
             .transform(RoundedCorners(itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius_image)))
