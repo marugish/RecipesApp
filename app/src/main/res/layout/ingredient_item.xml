@@ -11,6 +11,7 @@
         android:id="@+id/ingredient_checkbox"
         android:layout_width="18dp"
         android:layout_height="18dp"
+        android:layout_marginStart="4dp"
         android:layout_marginEnd="12dp"
         app:buttonTint="@color/main_color" />
 
@@ -18,7 +19,8 @@
         android:id="@+id/ingredientImage"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ingredient_placeholder"/>
+        android:src="@drawable/ingredient_placeholder_2"
+        android:layout_marginVertical="2dp"/>
 
     <TextView
         android:id="@+id/ingredientText"

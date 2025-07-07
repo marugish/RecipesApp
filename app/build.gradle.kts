@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.recyclerview)
 
     // AndroidX Navigation
     implementation(libs.androidx.navigation.fragment)

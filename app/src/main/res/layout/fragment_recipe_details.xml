@@ -84,7 +84,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ratingImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_star"
@@ -97,10 +97,52 @@
                 style="@style/subtitle_text_style"
                 android:textSize="11sp"
                 android:gravity="center"
-                tools:text="4.5 (19+)"
-                app:layout_constraintStart_toEndOf="@id/imageView"
-                app:layout_constraintBottom_toBottomOf="@id/imageView"
-                app:layout_constraintTop_toTopOf="@id/imageView" />
+                android:text="@string/rating"
+                app:layout_constraintStart_toEndOf="@id/ratingImage"
+                app:layout_constraintBottom_toBottomOf="@id/ratingImage"
+                app:layout_constraintTop_toTopOf="@id/ratingImage" />
+
+            <ImageView
+                android:id="@+id/timeImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clock_1"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/rating"
+                app:layout_constraintBottom_toBottomOf="@id/ratingImage"
+                app:layout_constraintTop_toTopOf="@id/ratingImage" />
+
+            <TextView
+                android:id="@+id/time"
+                style="@style/subtitle_text_style"
+                android:text="@string/time"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@id/timeImage"
+                app:layout_constraintBottom_toBottomOf="@id/timeImage"
+                app:layout_constraintTop_toTopOf="@id/timeImage" />
+
+            <ImageView
+                android:id="@+id/servingsImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/servings_2"
+                android:layout_marginStart="6dp"
+                app:layout_constraintStart_toEndOf="@id/time"
+                app:layout_constraintBottom_toBottomOf="@id/timeImage"
+                app:layout_constraintTop_toTopOf="@id/timeImage"/>
+
+            <TextView
+                android:id="@+id/servings"
+                style="@style/subtitle_text_style"
+                android:text="@string/servings"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:layout_marginStart="2dp"
+                app:layout_constraintStart_toEndOf="@id/servingsImage"
+                app:layout_constraintBottom_toBottomOf="@id/servingsImage"
+                app:layout_constraintTop_toTopOf="@id/servingsImage"/>
 
             <TextView
                 android:id="@+id/ingredientsTitle"
@@ -111,7 +153,7 @@
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView" />
+                app:layout_constraintTop_toBottomOf="@id/servingsImage" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ingredientRecyclerView"
@@ -120,8 +162,8 @@
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/ingredient_item"
-                android:visibility="gone"
-                android:layout_marginTop="12dp"
+                android:visibility="visible"
+                android:layout_marginTop="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ingredientsTitle"/>
