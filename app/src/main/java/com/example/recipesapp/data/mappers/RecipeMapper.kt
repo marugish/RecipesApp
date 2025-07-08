@@ -14,6 +14,7 @@ import com.example.recipesapp.domain.search.model.MeasureUnit
 import com.example.recipesapp.domain.search.model.Measures
 import com.example.recipesapp.domain.search.model.Recipe
 import com.example.recipesapp.domain.search.model.RecipesFound
+import com.example.recipesapp.domain.search.model.RecommendationsFound
 import com.example.recipesapp.domain.search.model.Step
 
 fun RecipesResponse.toDomain(): RecipesFound {

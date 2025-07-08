@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/vertical_linear_layout"
-    android:padding="@dimen/default_margin"
+    android:paddingVertical="@dimen/default_margin"
     tools:context=".ui.search.SearchFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/searchInputContainer"
         style="@style/search_text_input_layout_style"
-        android:layout_marginBottom="@dimen/default_margin">
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchTextInput"
@@ -21,7 +22,8 @@
         android:id="@+id/trendingSearchLayout"
         style="@style/vertical_linear_layout"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:visibility="gone">
 
         <TextView
             style="@style/semi_bold_title_text_style"
@@ -42,17 +44,20 @@
     <LinearLayout
         android:id="@+id/recommendationLayout"
         style="@style/vertical_linear_layout"
+
         android:visibility="visible">
 
         <TextView
             style="@style/semi_bold_title_text_style"
             android:text="@string/recommendation"
+            android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginBottom="8dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommendationRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
@@ -63,6 +68,7 @@
     <LinearLayout
         android:id="@+id/searchLayout"
         style="@style/vertical_linear_layout"
+        android:layout_marginHorizontal="@dimen/default_margin"
         android:visibility="gone">
 
         <TextView

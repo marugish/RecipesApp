@@ -9,6 +9,7 @@
     <dimen name="text_20">20sp</dimen>
     <dimen name="text_14">14sp</dimen>
     <dimen name="text_12">12sp</dimen>
+    <dimen name="text_10">10sp</dimen>
     <dimen name="text_min">11sp</dimen>
     <!-- button -->
     <dimen name="button_size">48dp</dimen>
