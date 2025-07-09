@@ -39,6 +39,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if ((activity as RootActivity).auth.currentUser != null) {
+            // Пользователь уже авторизован, перейти к основному экрану
+            Log.i("myTest", "The user is already authorized.")
+            findNavController().navigate(R.id.action_loginFragment_to_searchFragment)
+        }
+
         val updateButtonState = {
             val email = binding.mailEditText.text?.toString().orEmpty()
             val password = binding.passwordEditText.text?.toString().orEmpty()
