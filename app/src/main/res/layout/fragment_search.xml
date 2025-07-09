@@ -44,7 +44,6 @@
     <LinearLayout
         android:id="@+id/recommendationLayout"
         style="@style/vertical_linear_layout"
-
         android:visibility="visible">
 
         <TextView
@@ -89,7 +88,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/default_margin">
 
         <!-- Страница Ошибок -->
         <LinearLayout

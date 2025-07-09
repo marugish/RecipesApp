@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/arcticlesFragment"
-        android:name="com.example.recipesapp.ui.arcticles.ArcticlesFragment"
+        android:name="com.example.recipesapp.ui.articles.ArticlesFragment"
         android:label="fragment_arcticles"
         tools:layout="@layout/fragment_arcticles" />
     <fragment

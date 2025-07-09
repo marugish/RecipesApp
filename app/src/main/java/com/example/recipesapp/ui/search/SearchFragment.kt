@@ -2,6 +2,7 @@ package com.example.recipesapp.ui.search
 
 import androidx.core.widget.addTextChangedListener
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,8 +57,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                     errorLayoutVisibility()
                 } else {
                     trendingAndRecommendationVisibility()
-
                     notFoundLayoutVisibility()
+                    errorLayoutVisibility()
                     adapter.updateRecipesList(emptyList())
                 }
                 viewModel.searchDebounce(changedText = s?.toString() ?: "")
@@ -132,6 +133,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         errorLayoutVisibility(isShown = true)
         binding.errorText.text = errorText
         binding.errorImage.setImageResource(errorImageId)
+        trendingAndRecommendationVisibility()
     }
 
     private fun recyclerViewVisibility(isShown: Boolean = false) {
@@ -167,7 +169,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 //showEmpty()
             }
             is RecipesScreenState.Error -> {
-                //showError(state.errorText, state.errorImageId)
+                showError(state.errorText, state.errorImageId)
             }
         }
     }
@@ -176,12 +178,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         recommendationAdapter.updateRecommendationList(recipesList)
         recommendationRecyclerViewVisibility(isShown = true)
         progressBarContentVisibility()
-
+        errorLayoutVisibility()
         // под вопросом
-        //errorLayoutVisibility()
-        //notFoundLayoutVisibility()
-
-
+        // notFoundLayoutVisibility()
         //progressBarPaginationVisibility()
     }
 
