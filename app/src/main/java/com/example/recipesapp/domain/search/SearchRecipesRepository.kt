@@ -1,6 +1,7 @@
 package com.example.recipesapp.domain.search
 
 import com.example.recipesapp.domain.search.model.RecipesStateLoad
+import com.example.recipesapp.domain.search.model.RecommendationsStateLoad
 import kotlinx.coroutines.flow.Flow
 
 interface SearchRecipesRepository {
@@ -12,4 +13,6 @@ interface SearchRecipesRepository {
         fillIngredients: Boolean,
         addRecipeInstructions: Boolean
     ): Flow<RecipesStateLoad>
+
+    fun searchRecommendations(number: Int): Flow<RecommendationsStateLoad>
 }

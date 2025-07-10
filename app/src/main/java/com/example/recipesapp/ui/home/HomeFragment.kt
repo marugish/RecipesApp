@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.recipesapp.BaseFragment
@@ -49,6 +50,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         // если от поставщика услуг
         // ...
+
+        binding.logoutButton.setOnClickListener {
+            (activity as RootActivity).auth.signOut()
+            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
     }
 
 }

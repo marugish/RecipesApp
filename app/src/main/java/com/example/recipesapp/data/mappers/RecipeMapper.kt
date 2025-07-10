@@ -1,6 +1,5 @@
 package com.example.recipesapp.data.mappers
 
-import android.util.Log
 import com.example.recipesapp.data.dto.IngredientDto
 import com.example.recipesapp.data.dto.InstructionsDto
 import com.example.recipesapp.data.dto.MeasureUnitDto
@@ -8,21 +7,28 @@ import com.example.recipesapp.data.dto.MeasuresDto
 import com.example.recipesapp.data.dto.RecipeDto
 import com.example.recipesapp.data.dto.StepDto
 import com.example.recipesapp.data.network.RecipesResponse
+import com.example.recipesapp.data.network.RecommendationsResponse
 import com.example.recipesapp.domain.search.model.Ingredient
 import com.example.recipesapp.domain.search.model.Instructions
 import com.example.recipesapp.domain.search.model.MeasureUnit
 import com.example.recipesapp.domain.search.model.Measures
 import com.example.recipesapp.domain.search.model.Recipe
 import com.example.recipesapp.domain.search.model.RecipesFound
+import com.example.recipesapp.domain.search.model.RecommendationsFound
 import com.example.recipesapp.domain.search.model.Step
 
 fun RecipesResponse.toDomain(): RecipesFound {
-    Log.i("myTest", "$recipesList")
     return RecipesFound(
         recipesList = recipesList.map { it.toDomain() },
         offset = offset,
         number = number,
         totalResults = totalResults
+    )
+}
+
+fun RecommendationsResponse.toDomain(): RecommendationsFound {
+    return RecommendationsFound(
+        recipesList = recipesList.map { it.toDomain() }
     )
 }
 
@@ -43,7 +49,6 @@ private fun RecipeDto.toDomain(): Recipe {
 }
 
 private fun IngredientDto.toDomain(): Ingredient {
-    Log.i("myTest", "$this")
     return Ingredient(
         id = id,
         image = image ?: "",

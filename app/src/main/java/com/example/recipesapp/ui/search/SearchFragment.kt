@@ -2,11 +2,13 @@ package com.example.recipesapp.ui.search
 
 import androidx.core.widget.addTextChangedListener
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.BaseFragment
 import com.example.recipesapp.R
@@ -21,6 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private val adapter = SearchRecipeAdapter(clickListener = { recipe -> showRecipeDetail(recipe) })
+    private val recommendationAdapter = RecommendationAdapter(clickListener = { recipe -> showRecipeDetail(recipe) })
     private fun showRecipeDetail(recipe: Recipe) {
         val bundle = Bundle()
         bundle.putSerializable("recipe", recipe)
@@ -36,8 +39,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Обычный поиск
         binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.searchRecyclerView.adapter = adapter
+
+        // Рекомендации
+        binding.recommendationRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recommendationRecyclerView.adapter = recommendationAdapter
 
         // Edit Text
         binding.searchTextInput.addTextChangedListener(
@@ -49,8 +57,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                     errorLayoutVisibility()
                 } else {
                     trendingAndRecommendationVisibility()
-
                     notFoundLayoutVisibility()
+                    errorLayoutVisibility()
                     adapter.updateRecipesList(emptyList())
                 }
                 viewModel.searchDebounce(changedText = s?.toString() ?: "")
@@ -73,6 +81,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         // подписаться на обновления от ViewModel
         viewModel.searchScreenState.observe(viewLifecycleOwner) {
             render(it)
+        }
+
+        // Рекомендации
+        viewModel.recommendationScreenState.observe(viewLifecycleOwner) {
+            recommendationRender(it)
         }
 
     }
@@ -120,6 +133,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         errorLayoutVisibility(isShown = true)
         binding.errorText.text = errorText
         binding.errorImage.setImageResource(errorImageId)
+        trendingAndRecommendationVisibility()
     }
 
     private fun recyclerViewVisibility(isShown: Boolean = false) {
@@ -140,6 +154,37 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun trendingAndRecommendationVisibility(isShown: Boolean = false) {
         binding.trendingSearchLayout.isVisible = isShown
+        binding.recommendationLayout.isVisible = isShown
+    }
+
+    private fun recommendationRender(state: RecipesScreenState) {
+        when (state) {
+            is RecipesScreenState.Loading -> {
+                showLoading()
+            }
+            is RecipesScreenState.Content -> {
+                showRecommendationContent(state.recipesList)
+            }
+            is RecipesScreenState.NothingFound -> {
+                //showEmpty()
+            }
+            is RecipesScreenState.Error -> {
+                showError(state.errorText, state.errorImageId)
+            }
+        }
+    }
+
+    private fun showRecommendationContent(recipesList: List<Recipe>) {
+        recommendationAdapter.updateRecommendationList(recipesList)
+        recommendationRecyclerViewVisibility(isShown = true)
+        progressBarContentVisibility()
+        errorLayoutVisibility()
+        // под вопросом
+        // notFoundLayoutVisibility()
+        //progressBarPaginationVisibility()
+    }
+
+    private fun recommendationRecyclerViewVisibility(isShown: Boolean = false) {
         binding.recommendationLayout.isVisible = isShown
     }
 

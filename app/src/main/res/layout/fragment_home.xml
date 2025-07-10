@@ -22,8 +22,9 @@
             android:padding="2dp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:paddingHorizontal="12dp">
@@ -39,6 +40,18 @@
                 android:text="@string/email"
                 android:textSize="@dimen/text_10" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:text="@string/logout"
+            style="@style/button_style"
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_outline"
+            android:textColor="@color/main_color"
+            android:enabled="true" />
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider

@@ -12,5 +12,11 @@ enum class AppError(val code: Int, @StringRes val messageRes: Int, @DrawableRes 
     NotFound(404, R.string.not_found, R.drawable.ic_error_not_found),
     InternalServer(500, R.string.internal_server, R.drawable.ic_error_internal_server),
     Unknown(-1, R.string.unknown, R.drawable.ic_error_unknown2),
-    NoInternet(-100, R.string.no_internet, R.drawable.ic_error_no_internet)
+    NoInternet(-100, R.string.no_internet, R.drawable.ic_error_no_internet);
+
+    companion object {
+        fun fromCode(code: Int): AppError {
+            return entries.find { it.code == code } ?: Unknown
+        }
+    }
 }
