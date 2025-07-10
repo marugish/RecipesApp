@@ -5,7 +5,9 @@
     <string name="home">Home</string>
     <string name="explore">Explore</string>
     <string name="favorites">Favorites</string>
-    <string name="arcticles">Arcticles</string>
+    <string name="articles">Articles</string>
+    <string name="your_favorites">Your Favorites</string>
+    <string name="recipes">Recipes</string>
 
     <!-- SignIn -->
     <string name="welcome">Welcome!</string>

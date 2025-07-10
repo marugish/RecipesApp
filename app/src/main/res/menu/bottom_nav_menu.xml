@@ -23,6 +23,6 @@
     <item
         android:id="@+id/arcticlesFragment"
         android:icon="@drawable/ic_articles"
-        android:title="@string/arcticles"/>
+        android:title="@string/articles"/>
 
 </menu>
