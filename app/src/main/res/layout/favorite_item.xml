@@ -38,7 +38,7 @@
                 android:layout_gravity="bottom|start"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/round_like_solid" />
+                android:src="@drawable/round_like_inactive" />
         </FrameLayout>
     </androidx.cardview.widget.CardView>
 
