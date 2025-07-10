@@ -5,7 +5,9 @@
     <string name="home">Дом</string>
     <string name="explore">Обзор</string>
     <string name="favorites">Избранное</string>
-    <string name="arcticles">Статьи</string> -->
+    <string name="articles">Статьи</string>
+    <string name="your_favorites">Твоё избранное</string>
+    <string name="recipes">Рецепты</string>-->
 
     <!-- Вход -->
     <!--<string name="welcome">Добро пожаловать!</string>

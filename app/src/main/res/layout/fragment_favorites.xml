@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/vertical_linear_layout"
     tools:context=".ui.favorites.FavoritesFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/favorites" />
+        style="@style/bold_title_text_style"
+        android:text="@string/your_favorites"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="12dp"/>
 
-</FrameLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="?attr/background"
+        app:tabTextAppearance="@style/tab_text_style"
+        app:tabTextColor="@color/tab_text_color"
+        app:tabIndicatorColor="@color/main_color"
+        app:tabIndicatorFullWidth="false"
+        app:tabRippleColor="@color/main_color"
+        app:tabMode="scrollable"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="6dp">
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
