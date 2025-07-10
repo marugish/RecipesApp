@@ -7,6 +7,7 @@ import com.example.recipesapp.data.network.call
 import com.example.recipesapp.domain.search.SearchRecipesRepository
 import com.example.recipesapp.util.AppError
 import com.example.recipesapp.domain.search.model.RecipesStateLoad
+import com.example.recipesapp.domain.search.model.RecommendationsStateLoad
 import com.example.recipesapp.domain.search.model.Response
 import com.example.recipesapp.util.NetworkUtils
 import kotlinx.coroutines.Dispatchers
@@ -48,34 +49,38 @@ class SearchRecipesRepositoryImpl(
             // Обрабатываем результат
             emit(
                 when (response) {
-                    null -> {
-                        RecipesStateLoad.Loading
-                    }
-
-                    is Response.Error -> {
-                        RecipesStateLoad.Error(
-                            when(response.errorCode) {
-                                400 -> AppError.BadRequest
-                                401 -> AppError.Unauthorized            // + удалила ApiKey (замена подействовала также)
-                                402 -> AppError.PaymentRequired
-                                403 -> AppError.Forbidden
-                                404 -> AppError.NotFound                // + /recipess
-                                500 -> AppError.InternalServer
-                                else -> {
-                                    // Обработка остальных ошибок
-                                    println("Неизвестная ошибка: код ${response.errorCode}")
-                                    //AppError.Unknown(response.errorCode)
-                                    AppError.Unknown
-                                }
-                            }
-                        )
-                    }
-
-                    is Response.Success -> RecipesStateLoad.Success(
-                        response.data.toDomain()
-                    )
+                    null -> RecipesStateLoad.Loading
+                    is Response.Error -> RecipesStateLoad.Error(AppError.fromCode(response.errorCode))
+                    is Response.Success -> RecipesStateLoad.Success(response.data.toDomain())
                 }
             )
         }.flowOn(Dispatchers.IO)
     }
+
+    override fun searchRecommendations(number: Int): Flow<RecommendationsStateLoad> {
+        return flow {
+            // Попытка загрузки
+            emit(RecommendationsStateLoad.Loading)
+            // Проверяем сеть
+            if (!NetworkUtils.isNetworkAvailable(context)) {
+                emit(RecommendationsStateLoad.Error(AppError.NoInternet))
+                return@flow
+            }
+            // Получаем данные
+            val response = kotlin.runCatching {
+                apiService.searchRecommendations(
+                    number = number,
+                ).call()
+            }.getOrNull()
+            // Обрабатываем результат
+            emit(
+                when (response) {
+                    null -> RecommendationsStateLoad.Loading
+                    is Response.Error -> RecommendationsStateLoad.Error(AppError.fromCode(response.errorCode))
+                    is Response.Success -> RecommendationsStateLoad.Success(response.data.toDomain())
+                }
+            )
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

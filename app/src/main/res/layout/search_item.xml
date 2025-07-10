@@ -26,7 +26,7 @@
             <ImageView
                 android:id="@+id/recipeImage"
                 android:layout_width="0dp"
-                android:layout_height="152dp"
+                android:layout_height="160dp"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/recipeImage"
                 android:src="@drawable/food_placeholder"
@@ -72,7 +72,7 @@
                 android:id="@+id/rating"
                 style="@style/subtitle_text_style"
                 tools:text="4.5 (19+)"
-                android:textSize="11sp"
+                android:textSize="@dimen/text_min"
                 android:gravity="center"
                 app:layout_constraintStart_toEndOf="@id/ratingImage"
                 app:layout_constraintBottom_toBottomOf="@id/ratingImage"

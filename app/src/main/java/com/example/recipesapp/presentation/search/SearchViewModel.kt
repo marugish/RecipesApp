@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recipesapp.domain.search.SearchRecipesInteractor
 import com.example.recipesapp.domain.search.model.RecipesSearchResult
+import com.example.recipesapp.domain.search.model.RecommendationsResult
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -23,8 +24,28 @@ class SearchViewModel(
     private val _searchScreenState = MutableLiveData<RecipesScreenState>()
     val searchScreenState: LiveData<RecipesScreenState> = _searchScreenState
 
+    // Поиск рекомендаций
+    private val _recommendationScreenState = MutableLiveData<RecipesScreenState>(RecipesScreenState.Loading)
+    val recommendationScreenState: LiveData<RecipesScreenState> = _recommendationScreenState
+
     init {
-        // тут будет вызов рекомендаций и список фильтров
+        loadRecommendedRecipes() // вызов рекомендаций
+
+        // и список фильтров
+        // ...
+    }
+
+    private fun loadRecommendedRecipes() {
+        viewModelScope.launch {
+            searchRecipesInteractor.searchRecommendations(
+                number = 10
+            ).collect { recommendationsResult ->
+                // из состояния Domain в Presentation
+                val state: RecipesScreenState = handleState(recommendationsResult)
+                // обновление состояния экрана с рекомендациями
+                setRecommendationsScreenState(state)
+            }
+        }
     }
 
     fun searchDebounce(changedText: String) {
@@ -90,8 +111,35 @@ class SearchViewModel(
         return state
     }
 
+    private fun handleState(recommendationsResult: RecommendationsResult): RecipesScreenState {
+        val state: RecipesScreenState =
+            when (recommendationsResult) {
+                is RecommendationsResult.Loading -> RecipesScreenState.Loading
+                is RecommendationsResult.Success -> {
+                    RecipesScreenState.Content(
+                        recipesList = recommendationsResult.recipesFound.recipesList,
+                        foundRecipesCount = 10
+                    )
+                }
+                is RecommendationsResult.NothingFound -> RecipesScreenState.NothingFound
+                is RecommendationsResult.Error ->  {
+                    RecipesScreenState.Error(
+                        errorText = context.getString(recommendationsResult.error.messageRes),
+                        errorImageId = recommendationsResult.error.imageRes
+                    )
+                }
+            }
+        return state
+    }
+
+    // Обычный поиск
     private fun setScreenState(newState: RecipesScreenState) {
         _searchScreenState.postValue(newState)
+    }
+
+    // Рекомендации
+    private fun setRecommendationsScreenState(newState: RecipesScreenState) {
+        _recommendationScreenState.postValue(newState)
     }
 
     companion object {
